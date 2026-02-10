@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+:root {
+  /* Sophisticated Future Palette */
+  --navy: #0A1128;       /* Midnight Navy */
+  --navy-light: #1C2541; /* Lighter Navy */
+  --royal-blue: #1E40AF; /* Royal Blue */
+  --gold: #F59E0B;       /* Champagne Gold */
+  --gold-light: #FCD34D;
+  --white-slate: #F8FAFC;
+
+  /* Semantic Colors */
+  --bg-dark: var(--navy);
+  --text-primary: var(--white-slate);
+  --text-secondary: #94A3B8;
+  --accent-primary: var(--royal-blue);
+  --accent-secondary: var(--gold);
+  
+  --glass-bg: rgba(10, 17, 40, 0.7);
+  --glass-border: rgba(30, 64, 175, 0.2);
+  
+  --glow-primary: 0 0 40px rgba(30, 64, 175, 0.3);
+  --glow-gold: 0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--navy);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-mincho: var(--font-zen-old-mincho);
+}
+
+/* ── Reset ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--navy-mid) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-zen-old-mincho), serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ── Grid Background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* ── Glow Effects ── */
+.glow-primary {
+  box-shadow: var(--glow-primary);
+}
+.glow-gold {
+  box-shadow: var(--glow-gold);
+}
+
+.glow-text-primary {
+  text-shadow: 0 0 30px rgba(30, 64, 175, 0.4);
+}
+.glow-text-gold {
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+/* ── Glassmorphism Card ── */
+/* ── Glassmorphism Card (Crystal) ── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem; /* Slightly sharper corners */
+}
+
+.glass-card-hover {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glass-card-hover:hover {
+  border-color: rgba(30, 64, 175, 0.5);
+  box-shadow: 0 0 50px rgba(30, 64, 175, 0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Animated gradient border ── */
+.gradient-border {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--royal-blue), var(--gold), var(--royal-blue));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+}
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ── Pulse Ring Animation ── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 0; }
+  100% { transform: scale(0.8); opacity: 0.6; }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* ── Float Animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Horizontal Scan Line ── */
+/* ── Horizontal Scan Line ── */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--royal-blue), transparent);
+  opacity: 0.1;
+  z-index: 100;
+  pointer-events: none;
+  animation: scan 10s linear infinite;
+}
+
+/* ── Gradient Underline ── */
+.gradient-underline {
+  position: relative;
+  display: inline-block;
+}
+.gradient-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--gold));
+  border-radius: 0;
+}
+
+/* ── Number Counter Style ── */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ── Custom Slider ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--gold));
+  border-radius: 999px;
+  opacity: 0.4;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--navy);
+  margin-top: -7px;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+  transition: box-shadow 0.3s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.7);
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+}
