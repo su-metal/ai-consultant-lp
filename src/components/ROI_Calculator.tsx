@@ -1,165 +1,158 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Calculator, Zap } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Calculator, ArrowRight, DollarSign, Clock, Users } from 'lucide-react';
 
 const ROI_Calculator = () => {
-    const [hourlyWage, setHourlyWage] = useState(2500);
-    const [hoursReduced, setHoursReduced] = useState(150);
-    const [monthlySavings, setMonthlySavings] = useState(0);
-    const [yearlySavings, setYearlySavings] = useState(0);
-
     const sectionRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
-    useEffect(() => {
-        const monthly = hourlyWage * hoursReduced;
-        setMonthlySavings(monthly);
-        setYearlySavings(monthly * 12);
-    }, [hourlyWage, hoursReduced]);
+    const [employees, setEmployees] = useState(10);
+    const [hourlyWage, setHourlyWage] = useState(2500);
+    const [hoursReduced, setHoursReduced] = useState(20);
 
-    const formatCurrency = (val: number) => {
-        return new Intl.NumberFormat('ja-JP').format(val);
-    };
+    const monthlySavings = employees * hourlyWage * hoursReduced;
+    const yearlySavings = monthlySavings * 12;
 
     return (
-        <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden">
-            {/* Background effects */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-cyan-600/3 blur-[120px] pointer-events-none" />
+        <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-slate-50">
+            {/* Background elements */}
+            <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2 mix-blend-multiply" />
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.7 }}
-                    className="text-center mb-16"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-mono mb-6">
-                        <Calculator className="w-4 h-4 text-emerald-400" />
-                        ROI SIMULATOR
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-serif">
-                        <span className="text-white">貴社にとっての</span>
-                        <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-teal-400">
-                            「確かな一歩」を試算
-                        </span>
-                    </h2>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                        無理のない投資計画のために。<br className="hidden md:block" />
-                        AI導入による時間創出と、<span className="text-emerald-400 font-medium">生まれた時間の価値</span>を可視化します。
-                    </p>
-                </motion.div>
+                <div className="flex flex-col lg:flex-row items-center gap-16 max-w-6xl mx-auto">
 
-                {/* Calculator body */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.7, delay: 0.2 }}
-                    className="max-w-4xl mx-auto glass-card p-8 md:p-12 border-t-4 border-t-emerald-500/50"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        {/* Inputs */}
-                        <div className="space-y-10">
-                            <div>
-                                <label className="flex justify-between items-center mb-4">
-                                    <span className="text-sm font-bold text-slate-300 uppercase tracking-wider font-mono">
-                                        平均時給 (Hourly Wage)
-                                    </span>
-                                    <span className="text-2xl font-bold text-white font-mono border-b border-slate-600 px-2">
-                                        ¥{formatCurrency(hourlyWage)}
-                                    </span>
-                                </label>
-                                <input
-                                    type="range"
-                                    min="1000"
-                                    max="10000"
-                                    step="100"
-                                    value={hourlyWage}
-                                    onChange={(e) => setHourlyWage(Number(e.target.value))}
-                                    className="w-full accent-emerald-500"
-                                />
-                                <div className="flex justify-between text-xs text-slate-600 mt-2 font-mono">
-                                    <span>¥1,000</span>
-                                    <span>¥10,000</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="flex justify-between items-center mb-4">
-                                    <span className="text-sm font-bold text-slate-300 uppercase tracking-wider font-mono">
-                                        削減時間 (Hours/Month)
-                                    </span>
-                                    <span className="text-2xl font-bold text-white font-mono border-b border-slate-600 px-2">
-                                        {hoursReduced}h
-                                    </span>
-                                </label>
-                                <input
-                                    type="range"
-                                    min="10"
-                                    max="1000"
-                                    step="10"
-                                    value={hoursReduced}
-                                    onChange={(e) => setHoursReduced(Number(e.target.value))}
-                                    className="w-full accent-emerald-500"
-                                />
-                                <div className="flex justify-between text-xs text-slate-600 mt-2 font-mono">
-                                    <span>10h</span>
-                                    <span>1,000h</span>
-                                </div>
-                            </div>
-
-                            <div className="p-4 rounded-lg bg-slate-900/40 border border-slate-800 text-xs text-slate-400 leading-relaxed font-mono">
-                                <Zap className="w-3.5 h-3.5 inline-block mr-2 text-amber-400" />
-                                伴走の実績: 10万円以下の初期投資から、94.1%の中小企業が効果を実感しています。
-                            </div>
+                    {/* Left: Text Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.7 }}
+                        className="lg:w-1/2"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-500 text-sm font-medium mb-6 shadow-sm">
+                            <Calculator className="w-4 h-4 text-emerald-500" />
+                            ROI SIMULATION
                         </div>
+                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-slate-900 leading-tight">
+                            見えないコストを<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
+                                目に見える利益へ
+                            </span>
+                        </h2>
+                        <p className="text-xl text-slate-600 mb-8 leading-relaxed font-light">
+                            「なんとなく忙しい」を数字で可視化。<br />
+                            削減できた時間は、未来への投資や社員の幸せに還元できます。
+                        </p>
+                        <ul className="space-y-4 mb-8">
+                            {[
+                                '単純作業からの解放によるモチベーション向上',
+                                'ヒューマンエラー削減による手戻り工数の削減',
+                                'コア業務への集中による売上アップ'
+                            ].map((item, i) => (
+                                <li key={i} className="flex items-center gap-3 text-slate-700">
+                                    <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                        <ArrowRight className="w-3.5 h-3.5 text-emerald-600" />
+                                    </div>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
 
-                        {/* Results */}
-                        <div className="flex flex-col justify-center gap-6">
-                            {/* Monthly */}
-                            <div className="p-6 rounded-lg bg-slate-900/40 border border-slate-800 text-center">
-                                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3">Est. Monthly Savings</p>
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={monthlySavings}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="text-3xl font-bold text-slate-200 font-mono"
-                                    >
-                                        ¥{formatCurrency(monthlySavings)}
-                                    </motion.div>
-                                </AnimatePresence>
-                                <p className="text-slate-600 text-xs mt-1">月間コスト削減額</p>
+                    {/* Right: Calculator Card */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        className="lg:w-1/2 w-full"
+                    >
+                        <div className="modern-card p-8 md:p-10 relative overflow-hidden ring-4 ring-slate-50">
+                            {/* Inputs */}
+                            <div className="space-y-8 mb-10">
+                                {/* Employees Slider */}
+                                <div>
+                                    <div className="flex justify-between mb-4">
+                                        <label className="flex items-center gap-2 text-slate-700 font-bold text-sm">
+                                            <Users className="w-4 h-4 text-blue-500" />
+                                            対象従業員数
+                                        </label>
+                                        <span className="text-xl font-bold text-slate-900 font-mono">{employees}<span className="text-sm font-sans ml-1 text-slate-500">名</span></span>
+                                    </div>
+                                    <input
+                                        type="range"
+                                        min="1"
+                                        max="100"
+                                        value={employees}
+                                        onChange={(e) => setEmployees(Number(e.target.value))}
+                                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400"
+                                    />
+                                </div>
+
+                                {/* Hourly Wage Slider */}
+                                <div>
+                                    <div className="flex justify-between mb-4">
+                                        <label className="flex items-center gap-2 text-slate-700 font-bold text-sm">
+                                            <DollarSign className="w-4 h-4 text-amber-500" />
+                                            平均時給 (概算)
+                                        </label>
+                                        <span className="text-xl font-bold text-slate-900 font-mono">{hourlyWage.toLocaleString()}<span className="text-sm font-sans ml-1 text-slate-500">円</span></span>
+                                    </div>
+                                    <input
+                                        type="range"
+                                        min="1000"
+                                        max="5000"
+                                        step="100"
+                                        value={hourlyWage}
+                                        onChange={(e) => setHourlyWage(Number(e.target.value))}
+                                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-400"
+                                    />
+                                </div>
+
+                                {/* Hours Reduced Slider */}
+                                <div>
+                                    <div className="flex justify-between mb-4">
+                                        <label className="flex items-center gap-2 text-slate-700 font-bold text-sm">
+                                            <Clock className="w-4 h-4 text-rose-500" />
+                                            1人あたりの月間削減時間
+                                        </label>
+                                        <span className="text-xl font-bold text-slate-900 font-mono">{hoursReduced}<span className="text-sm font-sans ml-1 text-slate-500">時間</span></span>
+                                    </div>
+                                    <input
+                                        type="range"
+                                        min="1"
+                                        max="80"
+                                        value={hoursReduced}
+                                        onChange={(e) => setHoursReduced(Number(e.target.value))}
+                                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500 hover:accent-rose-400"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Yearly */}
-                            <div className="relative p-8 rounded-lg overflow-hidden text-center bg-gradient-to-br from-emerald-950 to-slate-900 border border-emerald-900/50 shadow-2xl shadow-emerald-900/20">
+                            {/* Result Display */}
+                            <div className="bg-white rounded-2xl p-8 text-center relative overflow-hidden group border border-slate-200 shadow-lg">
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white opacity-50" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
+                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl" />
 
                                 <div className="relative z-10">
-                                    <p className="text-xs font-mono text-emerald-400 uppercase tracking-[0.2em] mb-4">Projected Annual ROI</p>
-                                    <AnimatePresence mode="wait">
-                                        <motion.div
-                                            key={yearlySavings}
-                                            initial={{ scale: 0.9, opacity: 0 }}
-                                            animate={{ scale: 1, opacity: 1 }}
-                                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                                            className="text-5xl md:text-6xl font-black text-white font-mono tracking-tight"
-                                            style={{ textShadow: '0 0 40px rgba(16, 185, 129, 0.3)' }}
-                                        >
-                                            ¥{formatCurrency(yearlySavings)}
-                                        </motion.div>
-                                    </AnimatePresence>
-                                    <p className="text-emerald-500/60 text-sm mt-3 font-medium">年間コスト削減効果</p>
+                                    <p className="text-emerald-600 text-sm font-bold mb-2 uppercase tracking-wider">年間コスト削減効果</p>
+                                    <div className="flex items-baseline justify-center gap-1 mb-2">
+                                        <span className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 font-mono tracking-tight">
+                                            ¥{yearlySavings.toLocaleString()}
+                                        </span>
+                                        <span className="text-xl text-slate-600 font-medium">円</span>
+                                    </div>
+                                    <p className="text-sm text-slate-500">
+                                        月間 {monthlySavings.toLocaleString()}円 の削減
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );

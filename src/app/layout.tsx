@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Zen_Old_Mincho } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,17 +15,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const zenOldMincho = Zen_Old_Mincho({
-  weight: ["400", "700", "900"],
-  variable: "--font-zen-old-mincho",
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
   subsets: ["latin"],
-  preload: false,
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "まちなみ AIコンサルティング | 東三河の中小企業をAIで変革する",
+  title: "Machinami AI | 東三河のAIコンサルティング & アプリ開発",
   description:
-    "東三河（豊橋・豊川・蒲郡・新城・田原）の中小企業に特化したAIコンサルタント。製造業・飲食業・サービス業のAI導入・DX推進を支援します。",
+    "東三河（豊橋・豊川・蒲郡）を拠点とする「Machinami AI」。中小企業の業務効率化・生成AI導入支援から、Webアプリケーション開発までを一気通貫でサポートします。",
 };
 
 export default function RootLayout({
@@ -31,13 +33,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className="dark" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${zenOldMincho.variable} antialiased bg-[var(--navy)] text-[var(--text-primary)]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSansJP.variable} antialiased font-sans text-slate-900 bg-white mesh-gradient`}
       >
-        {/* Scan line effect */}
-        <div className="scan-line" />
+        <Navigation />
         {children}
+        <ScrollToTop />
+        <Footer />
       </body>
     </html>
   );

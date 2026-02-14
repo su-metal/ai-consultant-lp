@@ -1,275 +1,147 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Hero from '@/components/Hero';
-import Problems from '@/components/Problems';
-import CaseStudies from '@/components/CaseStudies';
-import Subsidies from '@/components/Subsidies';
-import ROI_Calculator from '@/components/ROI_Calculator';
-import { motion, AnimatePresence, useScroll } from 'framer-motion';
-import { Bot, Mail, Phone, MapPin, ArrowRight, ArrowUp, Menu, X } from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Bot, ChevronRight, Zap, Code, Globe, User, Mail, MapPin } from 'lucide-react';
+import HomeHero from '@/components/HomeHero';
+import ContactSection from '@/components/ContactSection'; // Using the styled contact section
 
-/* ── Scroll-to-top button ── */
-function ScrollToTop() {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 600);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <AnimatePresence>
-      {show && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-900/40 border border-blue-500/30 text-blue-400 hover:bg-blue-800/60 hover:text-white transition-all backdrop-blur-sm shadow-lg shadow-blue-900/20"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </motion.button>
-      )}
-    </AnimatePresence>
-  );
-}
-
-/* ── Navigation ── */
-const navLinks = [
-  { label: '課題', href: '#problems' },
-  { label: '事例', href: '#cases' },
-  { label: '補助金', href: '#subsidies' },
-  { label: 'ROI', href: '#roi' },
-  { label: 'お問合せ', href: '#contact' },
-];
-
-function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-        ? 'bg-[var(--navy)]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/40'
-        : 'bg-transparent'
-        }`}
-    >
-      {/* Scroll progress bar */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-blue-600 via-amber-400 to-blue-600 origin-left opacity-70"
-        style={{ scaleX: scrollYProgress, width: '100%' }}
-      />
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-blue-700 to-blue-900 border border-blue-500/30 group-hover:shadow-[0_0_20px_rgba(30,64,175,0.4)] transition-shadow">
-            <Bot className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold text-white tracking-tight font-serif">
-            まちなみ<span className="text-amber-500">.</span>
-          </span>
-        </a>
-
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-slate-400 hover:text-white font-medium transition-colors relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full" />
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="px-6 py-2.5 rounded-sm bg-blue-600 text-white text-sm font-bold hover:bg-blue-500 transition-all shadow-lg shadow-blue-900/30 border border-blue-400/20 tracking-wide"
-          >
-            無料相談
-          </a>
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-slate-400 hover:text-white"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[var(--navy)]/95 backdrop-blur-xl border-b border-white/5 overflow-hidden"
-          >
-            <div className="px-4 py-6 space-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-slate-300 hover:text-amber-400 font-medium transition-colors py-2 font-serif"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
-  );
-}
-
-/* ── Main Page ── */
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-[var(--navy)] font-sans selection:bg-blue-900 selection:text-amber-200">
-      <Navigation />
-      <ScrollToTop />
+    return (
+        <main className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+            <HomeHero />
 
-      <Hero />
+            <div className="section-divider opacity-30" />
 
-      <div className="section-divider opacity-30" />
+            {/* Introduction Section - Styled like Services Page */}
+            <section className="py-16 md:py-24 relative overflow-hidden">
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
 
-      <div id="problems">
-        <Problems />
-      </div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="max-w-4xl mx-auto text-center mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-blue-600 text-sm font-medium mb-6 shadow-sm"
+                        >
+                            <User className="w-4 h-4 text-blue-500" />
+                            WHO WE ARE
+                        </motion.div>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 text-slate-900 leading-tight">
+                            AIコンサルタント <span className="text-slate-300 mx-2 font-light">×</span> 個人開発者
+                        </h2>
+                        <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                            東三河を拠点に、最新の生成AI技術を活用した業務改革コンサルティングと、<br className="hidden md:block" />
+                            使いやすさを追求したWebアプリケーション開発を行っています。
+                        </p>
+                    </div>
 
-      <div className="section-divider opacity-30" />
+                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {/* Service Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="modern-card p-8 group relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <Bot className="w-32 h-32 text-blue-600" />
+                            </div>
 
-      <div id="cases">
-        <CaseStudies />
-      </div>
+                            <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform shadow-sm border border-blue-100">
+                                <Zap className="w-7 h-7" />
+                            </div>
 
-      <div className="section-divider opacity-30" />
+                            <h3 className="text-2xl font-bold mb-4 text-slate-900">AI Consulting</h3>
+                            <p className="text-slate-600 mb-8 leading-relaxed font-medium">
+                                ChatGPTやClaudeなどの生成AI導入支援、社内研修、業務フローの自動化まで。<br />
+                                「何から始めればいいかわからない」を解決します。
+                            </p>
 
-      <div id="subsidies">
-        <Subsidies />
-      </div>
+                            <Link href="/services" className="inline-flex items-center text-blue-600 font-bold hover:gap-2 transition-all group-hover:text-blue-700">
+                                サービス詳細を見る <ChevronRight className="w-4 h-4 ml-1" />
+                            </Link>
+                        </motion.div>
 
-      <div className="section-divider opacity-30" />
+                        {/* Works Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="modern-card p-8 group relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <Code className="w-32 h-32 text-indigo-600" />
+                            </div>
 
-      <div id="roi">
-        <ROI_Calculator />
-      </div>
+                            <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 text-indigo-600 group-hover:scale-110 transition-transform shadow-sm border border-indigo-100">
+                                <Globe className="w-7 h-7" />
+                            </div>
 
-      <div className="section-divider opacity-30" />
+                            <h3 className="text-2xl font-bold mb-4 text-slate-900">App Development</h3>
+                            <p className="text-slate-600 mb-8 leading-relaxed font-medium">
+                                Next.jsを中心としたモダンな技術選定で、高速かつ使いやすいWebアプリを開発。<br />
+                                MVP開発から本格運用までサポートします。
+                            </p>
 
-      {/* Footer / Contact */}
-      <footer id="contact" className="py-24 md:py-32 relative overflow-hidden bg-[var(--navy)]">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left */}
-            <div>
-              <div className="flex items-center gap-4 mb-10">
-                <div className="p-3 rounded-lg bg-gradient-to-br from-blue-800 to-slate-900 border border-blue-700/50 shadow-xl">
-                  <Bot className="w-8 h-8 text-white" />
+                            <Link href="/works" className="inline-flex items-center text-indigo-600 font-bold hover:gap-2 transition-all group-hover:text-indigo-700">
+                                開発実績を見る <ChevronRight className="w-4 h-4 ml-1" />
+                            </Link>
+                        </motion.div>
+                    </div>
                 </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-white tracking-tight font-serif">まちなみ<span className="text-amber-500">.</span></h2>
-                  <p className="text-xs text-slate-500 font-mono tracking-widest uppercase mt-1">AI Consulting & Solution</p>
-                </div>
-              </div>
+            </section>
 
-              <p className="text-slate-400 mb-12 leading-loose text-lg max-w-lg font-light">
-                「AIを使いこなす会社」か、<br />
-                「AIに置いていかれる会社」か。<br />
-                <span className="text-white font-medium border-b border-amber-500/50 pb-1">貴社の未来を、共に創りましょう。</span>
-              </p>
+            <div className="section-divider opacity-30" />
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-5 text-slate-400 group">
-                  <div className="p-2.5 rounded-full bg-slate-800/50 border border-slate-700 group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <span className="group-hover:text-slate-200 transition-colors tracking-wide">info@machinami-ai.example.com</span>
-                </div>
-                <div className="flex items-center gap-5 text-slate-400 group">
-                  <div className="p-2.5 rounded-full bg-slate-800/50 border border-slate-700 group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <span className="group-hover:text-slate-200 transition-colors tracking-wide">0532-XX-XXXX <span className="text-xs ml-2 text-slate-600">(平日 9:00 - 18:00)</span></span>
-                </div>
-                <div className="flex items-center gap-5 text-slate-400 group">
-                  <div className="p-2.5 rounded-full bg-slate-800/50 border border-slate-700 group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <span className="group-hover:text-slate-200 transition-colors tracking-wide">愛知県豊橋市</span>
-                </div>
-              </div>
-            </div>
+            {/* Profile Snippet */}
+            <section className="py-16 md:py-24 bg-slate-50/50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16 border border-slate-200 shadow-xl shadow-slate-200/40 relative overflow-hidden">
+                        {/* Blob decoration */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-            {/* Right: Contact Form */}
-            <div className="glass-card p-8 md:p-12 border-t-4 border-t-amber-500/50">
-              <h3 className="text-2xl font-bold text-white mb-2 font-serif">お問い合わせ</h3>
-              <p className="text-sm text-slate-500 mb-8 font-mono">30 MINUTES FREE CONSULTATION</p>
+                        <div className="shrink-0 relative z-10">
+                            <div className="w-32 h-32 md:w-44 md:h-44 rounded-full p-1 bg-gradient-to-br from-slate-100 to-slate-200 shadow-inner">
+                                <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-4 border-white shadow-lg">
+                                    {/* Icon Placeholder */}
+                                    <Bot className="w-16 h-16 text-slate-300" />
+                                </div>
+                            </div>
+                            <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full border-2 border-white shadow-md">
+                                HUMAN
+                            </div>
+                        </div>
 
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Company Name</label>
-                  <input
-                    type="text"
-                    placeholder="御社名"
-                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-white placeholder-slate-700 focus:outline-none focus:border-blue-500 focus:bg-blue-900/10 transition-all font-light"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    placeholder="メールアドレス"
-                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-white placeholder-slate-700 focus:outline-none focus:border-blue-500 focus:bg-blue-900/10 transition-all font-light"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="ご相談内容（簡単で構いません）"
-                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-white placeholder-slate-700 focus:outline-none focus:border-blue-500 focus:bg-blue-900/10 transition-all resize-none font-light"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="group w-full px-8 py-5 bg-gradient-to-r from-blue-700 to-blue-600 rounded-lg font-bold text-lg text-white overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(29,78,216,0.4)] active:scale-[0.98] flex items-center justify-center gap-3 border border-blue-500/30"
-                >
-                  <span className="relative z-10">無料相談を申し込む</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
-                </button>
-              </form>
-            </div>
-          </div>
+                        <div className="text-center md:text-left flex-1 relative z-10">
+                            <div className="mb-2 text-blue-600 font-bold tracking-wide text-sm uppercase">About Me</div>
+                            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">
+                                佐田 真教 <span className="text-lg font-normal text-slate-500 ml-2">Masanori Sada</span>
+                            </h3>
+                            <p className="text-slate-600 leading-relaxed mb-8 font-medium">
+                                愛知県豊橋市在住。地元・東三河の企業様を、AIとシステム開発の両面でお手伝いします。「難しい技術を、誰でも使える形に」。現場ですぐに役に立つ、成果につながる仕組みづくりを大切にしています。
+                            </p>
 
-          {/* Bottom bar */}
-          <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-600 font-mono">
-              &copy; 2026 Machinami AI Consulting. All rights reserved.
-            </p>
-            <p className="text-xs text-slate-600 font-serif">
-              代表: 佐田真教
-            </p>
-          </div>
-        </div>
-      </footer>
-    </main>
-  );
+                            <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                                <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full border border-slate-200">#AI活用</span>
+                                <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full border border-slate-200">#アプリ開発</span>
+                                <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full border border-slate-200">#業務効率化</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div className="section-divider opacity-30" />
+
+            {/* Contact Section */}
+            <ContactSection />
+        </main>
+    );
 }
