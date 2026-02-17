@@ -10,12 +10,14 @@ export default function SupportPage() {
     <main className="min-h-screen bg-white text-slate-900 pt-28 pb-20">
       <section className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Support</h1>
-        <p className="text-slate-600 mb-10">If you have issues with login, billing, or unlock flow, contact us with the details below.</p>
+        <p className="text-slate-600 mb-3">If you have issues with login, billing, or unlock flow, contact us with the details below.</p>
+        <p className="text-slate-700 mb-2">このサポート窓口は、Chrome拡張機能「THE TOLL」および関連するWebアプリに関するお問い合わせ専用です。</p>
+        <p className="text-slate-700 mb-10">ポートフォリオ制作案件のご相談は別途Contactページをご利用ください。</p>
 
         <div className="space-y-8 text-slate-700 leading-relaxed">
           <section>
             <h2 className="text-xl font-semibold text-slate-900 mb-2">Contact</h2>
-            <p>Support email: support@example.com</p>
+            <p>Support email: info@machinami0924.com</p>
             <p>Response target: within 2 business days</p>
           </section>
 
@@ -42,3 +44,5 @@ export default function SupportPage() {
     </main>
   );
 }
+
+

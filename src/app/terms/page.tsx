@@ -10,7 +10,9 @@ export default function TermsPage() {
     <main className="min-h-screen bg-white text-slate-900 pt-28 pb-20">
       <section className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Terms of Service</h1>
-        <p className="text-sm text-slate-500 mb-10">Last updated: 2026-02-13</p>
+        <p className="text-sm text-slate-500 mb-4">Last updated: 2026-02-13</p>
+        <p className="text-slate-700 mb-2">本利用規約は、Chrome拡張機能「THE TOLL」および関連するWebアプリの利用条件を定めるものです。</p>
+        <p className="text-slate-700 mb-10">ポートフォリオサイト閲覧自体には適用されません。</p>
 
         <div className="space-y-8 text-slate-700 leading-relaxed">
           <section>
@@ -37,10 +39,12 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-slate-900 mb-2">5. Contact</h2>
             <p>Operator: THE TOLL Operations Office</p>
-            <p>Email: support@example.com</p>
+            <p>Email: info@machinami0924.com</p>
           </section>
         </div>
       </section>
     </main>
   );
 }
+
+
