@@ -16,7 +16,7 @@ const features = [
 
 const plans = [
   { name: 'FREE', detail: '基本機能（制限あり）' },
-  { name: 'TRIAL', detail: '新規ユーザー 7日間トライアル' },
+  { name: 'TRIAL', detail: '新規ユーザー 14日間トライアル' },
   { name: 'PRO', detail: 'すべての制限解除 + 課金機能' },
 ];
 
