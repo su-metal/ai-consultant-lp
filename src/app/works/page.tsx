@@ -26,9 +26,9 @@ const mainProduct = {
 const devApps = [
     {
         id: 3,
-        title: "New Project A (Coming Soon)",
-        description: "地域課題解決型プラットフォームアプリ。現在、MVP開発中。",
-        tags: ["Flutter", "Firebase", "Google Maps API"],
+        title: "葬儀会場手配のスケジュール管理アプリ",
+        description: "葬儀会場の空き状況確認から手配進行までを一元管理し、調整業務を効率化するスケジュール管理アプリ。",
+        tags: ["Next.js", "Supabase", "Calendar UI"],
         image: "/api/placeholder/400/300",
         storeLink: "#",
         githubLink: null,
@@ -36,9 +36,9 @@ const devApps = [
     },
     {
         id: 4,
-        title: "New Project B (Coming Soon)",
-        description: "AIエージェントを活用した業務効率化SaaS。バックエンド開発中。",
-        tags: ["Python", "FastAPI", "LangChain", "Vector DB"],
+        title: "受注伝票OCR自動転記アプリ",
+        description: "製本工場の受注伝票をカメラで読み取り、抽出した内容をスプレッドシートへ自動転記する業務効率化アプリ。",
+        tags: ["OCR", "Google Sheets API", "Python", "Camera Input"],
         image: "/api/placeholder/400/300",
         storeLink: "#",
         githubLink: null,
