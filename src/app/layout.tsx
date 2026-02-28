@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'verification=5XEVbrsXhLYYjSzJG2hLbhe_VLnqJsodV5JKtUrmqYI', // TODO: Google Search Console で取得したIDを設定
+    google: '5XEVbrsXhLYYjSzJG2hLbhe_VLnqJsodV5JKtUrmqYI', // Google Search Console で取得したIDのみを設定
   },
 
 
