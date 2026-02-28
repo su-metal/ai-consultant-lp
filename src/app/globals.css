@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography"; 
 :root {
   /* Modern Clean Palette */
   --bg-primary: #FFFFFF;
