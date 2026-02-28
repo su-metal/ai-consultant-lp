@@ -58,13 +58,13 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="py-24 md:py-32 relative overflow-hidden bg-slate-50">
+        <section className="py-16 md:py-24 relative overflow-hidden bg-slate-50">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/60 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-100/60 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
                     {/* Left */}
                     <div>
                         <div className="flex items-center gap-4 mb-10">
@@ -72,17 +72,17 @@ export default function ContactSection() {
                                 <Bot className="w-8 h-8 text-blue-600" />
                             </div>
                             <div>
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight font-serif">Machinami AI</h2>
+                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight font-serif">まちなみ AI</h2>
                                 <p className="text-xs text-slate-500 font-mono tracking-widest uppercase mt-1">AI Consulting & Solution</p>
                             </div>
                         </div>
 
-                        <p className="text-slate-600 mb-12 leading-loose text-lg max-w-lg font-normal">
+                        <p className="text-slate-600 mb-10 leading-loose text-base max-w-lg font-normal">
                             「AIで、もっと自由に。」<br />
                             <span className="text-slate-900 font-bold border-b-2 border-blue-500/30 pb-1">未来を変える一歩を、ここから始めましょう。</span>
                         </p>
 
-                        <div className="space-y-6">
+                        <div className="space-y-5">
                             <div className="flex items-center gap-5 text-slate-600 group">
                                 <div className="p-2.5 rounded-full bg-white border border-slate-200 group-hover:border-blue-500/50 group-hover:text-blue-600 transition-colors shadow-sm">
                                     <Mail className="w-5 h-5" />
@@ -105,11 +105,11 @@ export default function ContactSection() {
                     </div>
 
                     {/* Right: Contact Form */}
-                    <div className="modern-card p-8 md:p-12 border-t-4 border-t-blue-500">
+                    <div className="modern-card p-6 md:p-10 border-t-4 border-t-blue-500">
                         <h3 className="text-2xl font-bold text-slate-900 mb-2 font-serif">お問い合わせ</h3>
-                        <p className="text-sm text-slate-500 mb-8 font-mono">30 MINUTES FREE CONSULTATION</p>
+                        <p className="text-sm text-slate-500 mb-6 font-mono">30 MINUTES FREE CONSULTATION</p>
 
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form className="space-y-5" onSubmit={handleSubmit}>
                             <div>
                                 <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Company Name</label>
                                 <input
@@ -154,9 +154,8 @@ export default function ContactSection() {
                             </div>
                             {submitState.type && (
                                 <p
-                                    className={`text-sm ${
-                                        submitState.type === 'success' ? 'text-emerald-600' : 'text-rose-600'
-                                    }`}
+                                    className={`text-sm ${submitState.type === 'success' ? 'text-emerald-600' : 'text-rose-600'
+                                        }`}
                                     role="status"
                                 >
                                     {submitState.message}

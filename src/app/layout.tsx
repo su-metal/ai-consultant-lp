@@ -22,9 +22,53 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Machinami AI | 東三河のAIコンサルティング & アプリ開発",
-  description:
-    "東三河（豊橋・豊川・蒲郡）を拠点とする「Machinami AI」。中小企業の業務効率化・生成AI導入支援から、Webアプリケーション開発までを一気通貫でサポートします。",
+  metadataBase: new URL('https://machinami-ai.com'),
+  title: {
+    default: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
+    template: "%s | まちなみ AI"
+  },
+  description: "東三河（豊橋・豊川・蒲郡）を拠点とする「まちなみ AI」。中小企業の業務効率化・生成AI導入支援から、Webアプリケーション開発までを一気通貫でサポートします。",
+  keywords: ["AIコンサルティング", "アプリ開発", "業務効率化", "東三河", "豊橋", "生成AI導入", "まちなみAI"],
+  authors: [{ name: "佐田 真教" }],
+  creator: "佐田 真教",
+  publisher: "まちなみ AI",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
+    description: "東三河を拠点に、最新AI技術で地域企業の未来を創るコンサルティング＆開発パートナー。",
+    url: 'https://machinami-ai.com',
+    siteName: 'まちなみ AI',
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
+    description: "東三河を拠点に、最新AI技術で地域企業の未来を創るコンサルティング＆開発パートナー。",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'verification=5XEVbrsXhLYYjSzJG2hLbhe_VLnqJsodV5JKtUrmqYI', // TODO: Google Search Console で取得したIDを設定
+  },
+
+
+  alternates: {
+    canonical: 'https://machinami-ai.com',
+  },
 };
 
 export default function RootLayout({

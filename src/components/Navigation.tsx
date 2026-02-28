@@ -10,6 +10,7 @@ const navLinks = [
     { label: 'Top', href: '/' },
     { label: 'Services', href: '/services' },
     { label: 'Works', href: '/works' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
 ];
 
@@ -46,7 +47,7 @@ export default function Navigation() {
                         <Bot className="w-5 h-5 text-white" />
                     </div>
                     <span className="text-xl font-bold tracking-tight font-serif text-slate-900 transition-colors">
-                        Machinami AI<span className="text-blue-600">.</span>
+                        まちなみ AI<span className="text-blue-600">.</span>
                     </span>
                 </Link>
 
