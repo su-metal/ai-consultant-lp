@@ -1,12 +1,25 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Cpu, Zap, Activity, Target } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ServicesHero() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const shouldReduceMotion = useReducedMotion();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 767px)');
+        const updateMobileState = () => setIsMobile(mediaQuery.matches);
+        updateMobileState();
+        mediaQuery.addEventListener('change', updateMobileState);
+        return () => mediaQuery.removeEventListener('change', updateMobileState);
+    }, []);
+
+    const disableHeavyMotion = Boolean(shouldReduceMotion || isMobile);
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start start', 'end start'],
@@ -39,10 +52,10 @@ export default function ServicesHero() {
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-white">
 
                 {/* 1. Grain Texture */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply" />
+                <div className={`absolute inset-0 pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] ${disableHeavyMotion ? 'opacity-[0.015]' : 'opacity-[0.03] mix-blend-multiply'}`} />
 
                 {/* 2. Parallax Outline Typography */}
-                <motion.div style={{ y: bgY }} className="absolute inset-0 flex items-center justify-center select-none pt-40">
+                <motion.div style={disableHeavyMotion ? undefined : { y: bgY }} className={`absolute inset-0 flex items-center justify-center select-none pt-40 ${disableHeavyMotion ? 'hidden sm:flex' : ''}`}>
                     <span className="text-[25vw] lg:text-[30vw] font-black leading-none text-transparent stroke-black/5 stroke-[2px] font-sans tracking-tighter uppercase">
                         SOLUTIONS
                     </span>
@@ -50,23 +63,23 @@ export default function ServicesHero() {
 
                 {/* 3. Grid Pattern */}
                 <motion.div
-                    animate={{ backgroundPosition: ["0px 0px", "64px 64px"] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    animate={disableHeavyMotion ? undefined : { backgroundPosition: ["0px 0px", "64px 64px"] }}
+                    transition={disableHeavyMotion ? undefined : { duration: 20, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-0 opacity-[0.05]"
                     style={{
                         backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-                        backgroundSize: '64px 64px'
+                        backgroundSize: disableHeavyMotion ? '48px 48px' : '64px 64px'
                     }}
                 />
 
                 {/* 4. Tech Orbit Visualization */}
-                <div className="absolute inset-0 w-full h-full pointer-events-none z-10 flex items-center justify-center opacity-10">
-                    <motion.div style={{ rotate }} className="relative w-full max-w-[600px] lg:max-w-[1000px] aspect-square flex items-center justify-center">
+                <div className={`absolute inset-0 w-full h-full pointer-events-none z-10 flex items-center justify-center opacity-10 ${disableHeavyMotion ? 'hidden md:flex' : ''}`}>
+                    <motion.div style={disableHeavyMotion ? undefined : { rotate }} className="relative w-full max-w-[600px] lg:max-w-[1000px] aspect-square flex items-center justify-center">
                         {[1, 2, 3].map((ring) => (
                             <motion.div
                                 key={ring}
-                                animate={{ rotate: ring % 2 === 0 ? 360 : -360 }}
-                                transition={{ duration: 20 + ring * 10, repeat: Infinity, ease: "linear" }}
+                                animate={disableHeavyMotion ? undefined : { rotate: ring % 2 === 0 ? 360 : -360 }}
+                                transition={disableHeavyMotion ? undefined : { duration: 20 + ring * 10, repeat: Infinity, ease: "linear" }}
                                 className={`absolute rounded-full border-[1px] border-black border-dashed`}
                                 style={{ inset: `${(ring - 1) * 15}%` }}
                             />
@@ -78,13 +91,13 @@ export default function ServicesHero() {
             <div className="container mx-auto px-4 lg:px-8 relative z-20 h-full flex flex-col items-center justify-center mt-20">
 
                 {/* --- Content Area --- */}
-                <motion.div style={{ y: textY, opacity }} className="flex flex-col items-center text-center w-full max-w-6xl mx-auto z-30">
+                <motion.div style={disableHeavyMotion ? undefined : { y: textY, opacity }} className="flex flex-col items-center text-center w-full max-w-6xl mx-auto z-30">
 
                     {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        initial={disableHeavyMotion ? false : { opacity: 0, scale: 0.9 }}
+                        animate={disableHeavyMotion ? undefined : { opacity: 1, scale: 1 }}
+                        transition={disableHeavyMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
                         className="inline-flex items-center justify-center gap-3 py-2 px-8 border-4 border-black bg-white text-black text-xs font-black tracking-[0.3em] mb-12 w-fit shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                         <Target className="w-4 h-4" />
@@ -94,7 +107,7 @@ export default function ServicesHero() {
                     {/* Main H1 - Heavy Typography */}
                     <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter text-black mb-12 font-sans leading-[0.85] flex flex-col items-center">
                         <span className="block mb-4 overflow-hidden py-2 px-4 whitespace-nowrap">
-                            {sentence1.split("").map((char, i) => (
+                            {disableHeavyMotion ? sentence1 : sentence1.split("").map((char, i) => (
                                 <motion.span
                                     key={i}
                                     initial={{ y: "110%", rotate: 10 }}
@@ -108,7 +121,7 @@ export default function ServicesHero() {
                         </span>
                         <div className="bg-black text-white px-10 pt-4 pb-6 overflow-hidden flex transform rotate-1 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]">
                             <span className="inline-block whitespace-nowrap">
-                                {sentence2.split("").map((char, i) => (
+                                {disableHeavyMotion ? sentence2 : sentence2.split("").map((char, i) => (
                                     <motion.span
                                         key={i}
                                         initial={{ y: "110%", rotate: -10 }}
@@ -125,9 +138,9 @@ export default function ServicesHero() {
 
                     {/* Sub Copy */}
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1.5 }}
+                        initial={disableHeavyMotion ? false : { opacity: 0, y: 20 }}
+                        animate={disableHeavyMotion ? undefined : { opacity: 1, y: 0 }}
+                        transition={disableHeavyMotion ? undefined : { duration: 1, delay: 1.5 }}
                         className="text-lg sm:text-xl md:text-2xl text-black max-w-4xl leading-relaxed font-bold mb-16 text-center"
                     >
                         曖昧な要望を、確かな成果へ。
@@ -139,15 +152,15 @@ export default function ServicesHero() {
 
                     {/* CTA Group */}
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 2, ease: "easeOut" }}
+                        initial={disableHeavyMotion ? false : { opacity: 0, y: 40 }}
+                        animate={disableHeavyMotion ? undefined : { opacity: 1, y: 0 }}
+                        transition={disableHeavyMotion ? undefined : { duration: 0.8, delay: 2, ease: "easeOut" }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full relative z-20"
                     >
                         <motion.div
-                            animate={{ x: mousePos.x, y: mousePos.y }}
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={handleMouseLeave}
+                            animate={disableHeavyMotion ? undefined : { x: mousePos.x, y: mousePos.y }}
+                            onMouseMove={disableHeavyMotion ? undefined : handleMouseMove}
+                            onMouseLeave={disableHeavyMotion ? undefined : handleMouseLeave}
                             className="w-full sm:w-auto"
                         >
                             <Link href="#contact" className="btn-primary flex items-center justify-center gap-3 group w-full sm:w-auto px-12 py-6 text-lg shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-3 hover:translate-y-3 transition-all">
