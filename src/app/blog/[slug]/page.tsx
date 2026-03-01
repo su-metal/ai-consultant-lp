@@ -69,7 +69,7 @@ export default async function BlogPost({ params }: Props) {
                             <img
                                 src={postData.image}
                                 alt={postData.title}
-                                className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+                                className="w-full h-full object-cover transition-all duration-700"
                             />
                         </div>
                     )}

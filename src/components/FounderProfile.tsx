@@ -12,7 +12,7 @@ export default function FounderProfile() {
 
                     <div className="shrink-0 relative z-10">
                         <div className="w-32 h-32 md:w-48 md:h-48 border-4 border-black p-1 bg-white">
-                            <div className="w-full h-full bg-white flex items-center justify-center overflow-hidden border-2 border-black relative grayscale">
+                            <div className="w-full h-full bg-white flex items-center justify-center overflow-hidden border-2 border-black relative">
                                 <Image
                                     src="/images/profile_avatar.png"
                                     alt="Masanori Sada Avatar"

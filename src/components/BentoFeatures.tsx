@@ -71,7 +71,7 @@ export default function BentoFeatures() {
                             <div className="w-14 h-14 bg-white text-black flex items-center justify-center mb-8">
                                 <Code className="w-7 h-7" />
                             </div>
-                            <h3 className="text-xl md:text-2xl font-black mb-4">モダンWeb開発</h3>
+                            <h3 className="text-xl md:text-2xl font-black mb-4 !text-white">モダンWeb開発</h3>
                             <p className="text-white opacity-90 text-sm leading-relaxed mb-8 font-bold">
                                 Next.js, Reactを活用した高速でセキュアなアプリケーション開発。MVPから本格運用までスケーラブルに対応。
                             </p>

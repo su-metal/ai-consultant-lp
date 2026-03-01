@@ -36,7 +36,7 @@ export default function BlogIndex() {
                                         <img
                                             src={image}
                                             alt={title}
-                                            className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105"
+                                            className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105"
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center bg-black group-hover:scale-105 transition-transform duration-500 ease-out">

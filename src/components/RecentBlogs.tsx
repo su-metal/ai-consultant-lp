@@ -46,7 +46,7 @@ export default function RecentBlogs() {
                                     <img
                                         src={post.image}
                                         alt={post.title}
-                                        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                                     />
                                 ) : (
                                     <div className="absolute inset-0 flex items-center justify-center bg-black">
