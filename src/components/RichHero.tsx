@@ -37,7 +37,7 @@ export default function RichHero() {
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
     return (
-        <section ref={containerRef} className="relative w-full overflow-hidden bg-white flex flex-col justify-start pt-32 lg:pt-40 pb-40 lg:pb-60 min-h-[850px] lg:min-h-[950px] border-b-8 border-black">
+        <section ref={containerRef} className="relative w-full overflow-hidden bg-white flex flex-col justify-start pt-20 lg:pt-28 pb-40 lg:pb-60 min-h-[850px] lg:min-h-[950px] border-b-8 border-black">
 
             {/* --- Dynamic Background Layer --- */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-white">
@@ -122,32 +122,36 @@ export default function RichHero() {
                         STRATEGIC AI INTELLIGENCE
                     </motion.div>
 
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] font-black tracking-tighter text-black mb-12 font-sans leading-[0.85] flex flex-col items-center">
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] font-black tracking-tighter text-black mb-12 font-sans leading-[0.85] flex flex-col items-center ml-4 sm:ml-0">
                         <span className="block mb-2 overflow-hidden py-2 px-4">
-                            {sentence1.split("").map((char, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ y: "110%", rotate: 10 }}
-                                    animate={{ y: 0, rotate: 0 }}
-                                    transition={{ duration: 1, delay: 0.4 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
-                                    className="inline-block"
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}
+                            <span className="inline-block whitespace-nowrap">
+                                {sentence1.split("").map((char, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ y: "110%", rotate: 10 }}
+                                        animate={{ y: 0, rotate: 0 }}
+                                        transition={{ duration: 1, delay: 0.4 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
+                                        className={`inline-block ${char === "、" ? "text-[0.6em] translate-y-[-0.2em]" : ""}`}
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </span>
                         </span>
                         <div className="bg-black text-white px-8 pt-4 pb-6 overflow-hidden flex transform -rotate-1 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]">
-                            {sentence2.split("").map((char, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ y: "110%", rotate: -10 }}
-                                    animate={{ y: 0, rotate: 0 }}
-                                    transition={{ duration: 1, delay: 1 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
-                                    className="inline-block"
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}
+                            <span className="inline-block whitespace-nowrap">
+                                {sentence2.split("").map((char, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ y: "110%", rotate: -10 }}
+                                        animate={{ y: 0, rotate: 0 }}
+                                        transition={{ duration: 1, delay: 1 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
+                                        className="inline-block"
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </span>
                         </div>
                     </h1>
 

@@ -69,19 +69,19 @@ export default function ContactSection() {
                         <div className="mb-12">
                             <div className="flex flex-col cursor-default">
                                 <div className="flex items-baseline leading-none mb-4">
-                                    <span className="text-6xl tracking-tighter text-black font-black uppercase">
+                                    <span className="text-4xl md:text-6xl tracking-tighter text-black font-black uppercase">
                                         machinami
                                     </span>
-                                    <span className="text-6xl tracking-tighter ml-4 font-black text-white bg-black px-4 pb-2">
+                                    <span className="text-4xl md:text-6xl tracking-tighter ml-2 md:ml-4 font-black text-white bg-black px-2 md:px-4 pb-1 md:pb-2">
                                         AI
                                     </span>
                                 </div>
                                 <div className="flex items-center opacity-80">
-                                    <span className="text-sm tracking-[0.5em] text-black font-black uppercase shrink-0">
+                                    <span className="text-[10px] md:text-sm tracking-[0.3em] text-black font-black uppercase shrink-0">
                                         まちなみ
                                     </span>
-                                    <div className="w-[2px] h-4 bg-black mx-6" />
-                                    <span className="text-xs tracking-[0.3em] text-black font-black uppercase">
+                                    <div className="w-[2px] h-4 bg-black mx-2 md:mx-6" />
+                                    <span className="text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.3em] text-black font-black uppercase">
                                         Strategic AI Consulting Partner
                                     </span>
                                 </div>

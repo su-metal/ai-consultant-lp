@@ -68,7 +68,7 @@ const MissionSection = () => {
                                 東京の大企業だけが最新技術を使える時代は終わりました。<br className="hidden md:block" />
                                 東三河で頑張る地元企業こそ、AIの恩恵を受けるべきだと考えます。
                             </p>
-                            <p className="inline-block border-b-4 border-black pb-1">
+                            <p className="inline-block pb-1">
                                 難しい言葉は使いません。<br className="hidden md:block" />
                                 「現場で本当に使える」仕組みを、一緒に作り上げていきます。
                             </p>
