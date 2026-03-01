@@ -1,30 +1,28 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography"; 
 :root {
-  /* Modern Clean Palette */
+  /* Monochrome Palette */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F8FAFC; /* Slate 50 */
-  --bg-tertiary: #F1F5F9;  /* Slate 100 */
+  --bg-secondary: #000000;
+  --bg-tertiary: #F8FAFC;
 
   /* Text Colors */
-  --text-primary: #0F172A;   /* Slate 900 */
-  --text-secondary: #475569; /* Slate 600 */
-  --text-tertiary: #94A3B8;  /* Slate 400 */
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-tertiary: #64748B;
 
-  /* Accents */
-  --accent-blue: #3B82F6;    /* Blue 500 */
-  --accent-indigo: #6366F1;  /* Indigo 500 */
-  --accent-cyan: #06B6D4;    /* Cyan 500 */
-  --accent-gradient: linear-gradient(135deg, #3B82F6, #6366F1);
+  /* Accent (Monochrome) */
+  --accent-black: #000000;
+  --accent-white: #FFFFFF;
   
   /* Borders */
-  --border-light: #E2E8F0;   /* Slate 200 */
+  --border-thick: 2px solid #000000;
+  --border-thicker: 4px solid #000000;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+  /* Shadows (Minimalistic) */
+  --shadow-sm: 2px 2px 0px 0px rgba(0,0,0,1);
+  --shadow-md: 4px 4px 0px 0px rgba(0,0,0,1);
+  --shadow-lg: 8px 8px 0px 0px rgba(0,0,0,1);
 }
 
 @theme inline {
@@ -32,6 +30,7 @@
   --color-foreground: var(--text-primary);
   --font-sans: var(--font-plus-jakarta);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --border-color-primary: #000000;
 }
 
 /* ── Reset ── */
@@ -74,43 +73,56 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(at 0% 100%, hsla(200,90%,96%,1) 0px, transparent 50%);
 }
 
-/* ── Modern Card ── */
+/* ── Modern Card (Monochrome & Thick Border) ── */
 .modern-card {
   background: white;
-  border: 1px solid var(--border-light);
-  border-radius: 1rem;
+  border: 2px solid black;
+  border-radius: 0; /* Sharp corners for modern solid look */
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
 }
 
 .modern-card:hover {
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
-  transform: translateY(-2px);
-  border-color: #BFDBFE; /* Blue 200 */
+  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
 }
 
-/* ── Buttons ── */
+/* ── Buttons (Black/White Inversion) ── */
 .btn-primary {
-  background: var(--accent-gradient);
+  background: black;
   color: white;
-  border-radius: 9999px;
-  font-weight: 600;
+  border: 2px solid black;
+  border-radius: 0;
+  font-weight: 700;
   padding: 0.75rem 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
-  transform: translateY(-1px);
+  background: white;
+  color: black;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 0;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: black;
+  color: white;
 }
 
 /* ── Typography Utilities ── */
 .text-gradient {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Simple black for text gradient fallback */
+  color: black;
 }
 
 /* ── Animations ── */
@@ -153,30 +165,30 @@ input[type="range"] {
   width: 100%;
 }
 input[type="range"]::-webkit-slider-runnable-track {
-  height: 6px;
+  height: 8px;
   background: #E2E8F0;
-  border-radius: 999px;
+  border: 2px solid black;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #fff;
-  border: 4px solid var(--accent-blue);
-  margin-top: -7px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: 24px;
+  width: 24px;
+  border-radius: 0;
+  background: #000;
+  border: 2px solid black;
+  margin-top: -9px;
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
   transition: all 0.2s;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
 }
 
 /* ── Section Divider ── */
 .section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
+  height: 4px;
+  background: black;
   margin-top: 4rem;
   margin-bottom: 4rem;
 }

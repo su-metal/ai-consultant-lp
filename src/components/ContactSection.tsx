@@ -58,115 +58,114 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="py-16 md:py-24 relative overflow-hidden bg-slate-50">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/60 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-100/60 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
+        <section className="py-20 md:py-32 relative overflow-hidden bg-white border-b-4 border-black">
+            {/* Background decoration - Extreme Minimal */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-black/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-                    {/* Left */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+                    {/* Left content */}
                     <div>
                         <div className="mb-12">
                             <div className="flex flex-col cursor-default">
-                                <div className="flex items-baseline leading-none mb-3">
-                                    <span className="text-5xl tracking-tighter text-slate-950 font-medium">
+                                <div className="flex items-baseline leading-none mb-4">
+                                    <span className="text-6xl tracking-tighter text-black font-black uppercase">
                                         machinami
                                     </span>
-                                    <span className="text-5xl tracking-tighter ml-3 font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600">
-                                        AI<span className="text-blue-500">.</span>
+                                    <span className="text-6xl tracking-tighter ml-4 font-black text-white bg-black px-4 pb-2">
+                                        AI
                                     </span>
                                 </div>
-                                <div className="flex items-center opacity-70">
-                                    <span className="text-xs tracking-[0.5em] text-slate-500 font-bold uppercase shrink-0">
+                                <div className="flex items-center opacity-80">
+                                    <span className="text-sm tracking-[0.5em] text-black font-black uppercase shrink-0">
                                         まちなみ
                                     </span>
-                                    <div className="w-[1px] h-3 bg-slate-300 mx-4" />
-                                    <span className="text-[10px] tracking-[0.3em] text-slate-400 font-bold uppercase">
+                                    <div className="w-[2px] h-4 bg-black mx-6" />
+                                    <span className="text-xs tracking-[0.3em] text-black font-black uppercase">
                                         Strategic AI Consulting Partner
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-slate-600 mb-10 leading-loose text-base max-w-lg font-normal">
-                            「AIで、もっと自由に。」<br />
-                            <span className="text-slate-900 font-bold border-b-2 border-blue-500/30 pb-1">未来を変える一歩を、ここから始めましょう。</span>
+                        <p className="text-black mb-12 leading-loose text-xl max-w-lg font-black uppercase italic tracking-wider">
+                            AIで、もっと自由に。<br />
+                            <span className="bg-black text-white px-2 py-1 not-italic">未来を変える一歩を、ここから。</span>
                         </p>
 
-                        <div className="space-y-5">
-                            <div className="flex items-center gap-5 text-slate-600 group">
-                                <div className="p-2.5 rounded-full bg-white border border-slate-200 group-hover:border-blue-500/50 group-hover:text-blue-600 transition-colors shadow-sm">
-                                    <Mail className="w-5 h-5" />
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-6 text-black group">
+                                <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none translate-y-0 group-hover:translate-x-1 group-hover:translate-y-1">
+                                    <Mail className="w-6 h-6" />
                                 </div>
-                                <span className="group-hover:text-slate-900 transition-colors tracking-wide">info@machinami0924.com</span>
+                                <span className="font-black text-lg tracking-wide uppercase">info@machinami0924.com</span>
                             </div>
-                            <div className="flex items-center gap-5 text-slate-600 group">
-                                <div className="p-2.5 rounded-full bg-white border border-slate-200 group-hover:border-blue-500/50 group-hover:text-blue-600 transition-colors shadow-sm">
-                                    <Phone className="w-5 h-5" />
+                            <div className="flex items-center gap-6 text-black group">
+                                <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none translate-y-0 group-hover:translate-x-1 group-hover:translate-y-1">
+                                    <Phone className="w-6 h-6" />
                                 </div>
-                                <span className="group-hover:text-slate-900 transition-colors tracking-wide">090-3454-2305 <span className="text-xs ml-2 text-slate-500">(平日 9:00 - 18:00)</span></span>
+                                <span className="font-black text-lg tracking-wide uppercase">090-3454-2305 <span className="text-xs ml-2 opacity-50">(WEEKDAY 9:00 - 18:00)</span></span>
                             </div>
-                            <div className="flex items-center gap-5 text-slate-600 group">
-                                <div className="p-2.5 rounded-full bg-white border border-slate-200 group-hover:border-blue-500/50 group-hover:text-blue-600 transition-colors shadow-sm">
-                                    <MapPin className="w-5 h-5" />
+                            <div className="flex items-center gap-6 text-black group">
+                                <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none translate-y-0 group-hover:translate-x-1 group-hover:translate-y-1">
+                                    <MapPin className="w-6 h-6" />
                                 </div>
-                                <span className="group-hover:text-slate-900 transition-colors tracking-wide">〒450-0002<br /> 愛知県名古屋市中村区名駅4丁目24番5号第2森ビル401</span>
+                                <span className="font-black text-sm tracking-wide uppercase">〒450-0002<br /> 愛知県名古屋市中村区名駅4丁目24番5号第2森ビル401</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right: Contact Form */}
-                    <div className="modern-card p-6 md:p-10 border-t-4 border-t-blue-500">
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2 font-serif">お問い合わせ</h3>
-                        <p className="text-sm text-slate-500 mb-6 font-mono">30 MINUTES FREE CONSULTATION</p>
+                    {/* Right: Contact Form - Monochrome Bold */}
+                    <div className="bg-white border-4 border-black p-8 md:p-12 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)]">
+                        <h3 className="text-3xl font-black text-black mb-2 uppercase tracking-tighter">Contact Us</h3>
+                        <p className="text-xs font-black text-black/40 mb-10 uppercase tracking-[0.3em]">30 Minutes Free Consultation</p>
 
-                        <form className="space-y-5" onSubmit={handleSubmit}>
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div>
-                                <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Company Name</label>
+                                <label className="block text-[10px] font-black text-black/60 uppercase tracking-[0.2em] mb-2">Company Name</label>
                                 <input
                                     type="text"
                                     name="companyName"
-                                    placeholder="御社名"
+                                    placeholder="Company / Name"
                                     value={formData.companyName}
                                     onChange={(event) =>
                                         setFormData((prev) => ({ ...prev, companyName: event.target.value }))
                                     }
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all shadow-sm"
+                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:bg-black focus:text-white transition-all font-bold"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
+                                <label className="block text-[10px] font-black text-black/60 uppercase tracking-[0.2em] mb-2">Email Address</label>
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder="メールアドレス"
+                                    placeholder="Email Address"
                                     value={formData.email}
                                     onChange={(event) =>
                                         setFormData((prev) => ({ ...prev, email: event.target.value }))
                                     }
                                     required
                                     autoComplete="email"
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all shadow-sm"
+                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:bg-black focus:text-white transition-all font-bold"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                                <label className="block text-[10px] font-black text-black/60 uppercase tracking-[0.2em] mb-2">Message</label>
                                 <textarea
                                     name="message"
                                     rows={4}
-                                    placeholder="ご相談内容（簡単で構いません）"
+                                    placeholder="Your Inquiry"
                                     value={formData.message}
                                     onChange={(event) =>
                                         setFormData((prev) => ({ ...prev, message: event.target.value }))
                                     }
                                     required
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all resize-none shadow-sm"
+                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:bg-black focus:text-white transition-all resize-none font-bold"
                                 />
                             </div>
                             {submitState.type && (
                                 <p
-                                    className={`text-sm ${submitState.type === 'success' ? 'text-emerald-600' : 'text-rose-600'
+                                    className={`text-sm font-black uppercase tracking-widest ${submitState.type === 'success' ? 'text-black bg-white border-2 border-black p-3' : 'text-white bg-black p-3'
                                         }`}
                                     role="status"
                                 >
@@ -176,10 +175,10 @@ export default function ContactSection() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="group w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg font-bold text-lg text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                className="btn-primary w-full py-5 text-xl font-black uppercase tracking-widest"
                             >
-                                <span className="relative z-10">{isSubmitting ? '送信中...' : '無料相談を申し込む'}</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                                <ArrowRight className="w-6 h-6 ml-3" />
                             </button>
                         </form>
                     </div>

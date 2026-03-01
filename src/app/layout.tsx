@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <body
-        className={`${plusJakarta.variable} ${notoSansJP.variable} antialiased font-sans text-slate-900 bg-white mesh-gradient`}
+        className={`${plusJakarta.variable} ${notoSansJP.variable} antialiased font-sans text-black bg-white`}
       >
         <Navigation />
         {children}

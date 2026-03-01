@@ -15,7 +15,6 @@ const cases = [
         reduction: '約94%削減',
         roi: '年間 1,200万円 相当',
         detail: '過去の図面データをAIに学習させ、類似形状を瞬時に検索するシステムを構築した場合の試算。熟練職人の暗黙知をデータベース化し、属人化を解消します。',
-        color: 'blue'
     },
     {
         icon: Utensils,
@@ -27,7 +26,6 @@ const cases = [
         reduction: 'ロス率 最小化',
         roi: '粗利益 改善見込',
         detail: '天気・イベント・近隣人流データから客数を予測するモデル。過剰在庫や機会損失を防ぎ、店舗利益の最大化を目指す活用例です。',
-        color: 'emerald'
     },
     {
         icon: FileText,
@@ -39,7 +37,6 @@ const cases = [
         reduction: '月300時間削減',
         roi: '生産性 1.5倍',
         detail: 'AI-OCRとRPAを組み合わせ、領収書の読み取りから入力までを自動化。創出した時間で付加価値の高い業務へシフトする、典型的なDX事例です。',
-        color: 'amber'
     },
 ];
 
@@ -48,10 +45,7 @@ const CaseStudies = () => {
     const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
     return (
-        <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-slate-50">
-            {/* Background elements */}
-            <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
-
+        <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-white">
             <div className="container mx-auto px-4 relative z-10">
                 {/* Section header */}
                 <motion.div
@@ -60,25 +54,25 @@ const CaseStudies = () => {
                     transition={{ duration: 0.7 }}
                     className="text-center mb-20"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-blue-600 text-sm font-medium mb-6 shadow-sm">
+                    <div className="inline-flex items-center gap-2 px-6 py-2 bg-black text-white text-sm font-bold mb-6 border-b-4 border-r-4 border-slate-500">
                         <TrendingUp className="w-4 h-4" />
                         USE CASES & IMPACT
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-slate-900">
-                        <span className="">AI導入がもたらす</span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-black uppercase">
+                        AI導入がもたらす
                         <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                        <span className="bg-black text-white px-4 py-1 inline-block mt-2">
                             劇的な変化と可能性
                         </span>
                     </h2>
-                    <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="text-xl text-black max-w-2xl mx-auto font-bold leading-relaxed">
                         「10万円以下の投資からでも、未来は変わる」<br className="hidden md:block" />
-                        業種ごとの<span className="text-blue-600 font-bold">一般的な導入モデルケース</span>をご紹介します。
+                        業種ごとの<span className="underline decoration-4">一般的な導入モデルケース</span>をご紹介します。
                     </p>
                 </motion.div>
 
                 {/* Case cards */}
-                <div className="space-y-8 max-w-5xl mx-auto mb-12">
+                <div className="space-y-12 max-w-5xl mx-auto mb-16">
                     {cases.map((item, index) => {
                         const Icon = item.icon;
                         return (
@@ -87,60 +81,56 @@ const CaseStudies = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.7, delay: index * 0.15 }}
-                                className="modern-card group hover:border-blue-300 transition-colors overflow-hidden"
+                                className="bg-white border-4 border-black group transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
                             >
                                 <div className="flex flex-col md:flex-row">
                                     {/* Left: Info */}
                                     <div className="flex-1 p-8 md:p-10 relative">
-                                        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-
                                         <div className="flex items-center gap-4 mb-6">
-                                            <div className="p-3 rounded-xl bg-blue-50 border border-blue-100">
-                                                <Icon className="w-6 h-6 text-blue-600" />
+                                            <div className="p-4 bg-black text-white border-b-4 border-r-4 border-slate-500">
+                                                <Icon className="w-8 h-8" />
                                             </div>
                                             <div>
-                                                <span className="text-xs font-mono text-slate-500 uppercase tracking-wider block mb-1">{item.industry}</span>
-                                                <h3 className="text-2xl font-bold text-slate-900">{item.company}</h3>
+                                                <span className="text-xs font-black font-mono text-black/40 uppercase tracking-widest block mb-1">{item.industry}</span>
+                                                <h3 className="text-3xl font-black text-black tracking-tighter uppercase">{item.company}</h3>
                                             </div>
                                         </div>
-                                        <p className="text-slate-600 text-base leading-relaxed">{item.detail}</p>
+                                        <p className="text-black/80 text-lg font-medium leading-relaxed">{item.detail}</p>
                                     </div>
 
                                     {/* Right: Metrics Dashboard */}
-                                    <div className="md:w-[400px] bg-slate-50/80 border-t md:border-t-0 md:border-l border-slate-100 p-8 flex flex-col justify-center gap-6">
-
+                                    <div className="md:w-[400px] bg-black text-white p-8 flex flex-col justify-center gap-8 border-t-4 md:border-t-0 md:border-l-4 border-black">
                                         {/* Reduction Metric */}
                                         <div>
-                                            <div className="flex justify-between text-xs text-slate-500 font-mono mb-2 uppercase tracking-wider">
+                                            <div className="flex justify-between text-xs text-white/50 font-black mb-4 uppercase tracking-widest">
                                                 <span>{item.metric}</span>
-                                                <span>Expected Impact</span>
+                                                <span>Impact</span>
                                             </div>
-                                            <div className="flex items-end gap-3">
-                                                <span className="text-4xl font-bold text-slate-800 tabular-nums">{item.after}</span>
-                                                <span className="text-xs text-emerald-600 mb-2 flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">
-                                                    <TrendingUp className="w-3 h-3" /> {item.reduction}
+                                            <div className="flex items-end gap-3 mb-4">
+                                                <span className="text-5xl font-black tabular-nums">{item.after}</span>
+                                                <span className="text-xs bg-white text-black px-3 py-1 font-black uppercase tracking-tighter">
+                                                    {item.reduction}
                                                 </span>
                                             </div>
-                                            <div className="w-full h-1.5 bg-slate-200 rounded-full mt-3 overflow-hidden">
+                                            <div className="w-full h-4 bg-white/10 border-2 border-white/20 overflow-hidden">
                                                 <motion.div
                                                     initial={{ width: 0 }}
-                                                    whileInView={{ width: '90%' }}
+                                                    whileInView={{ width: '94%' }}
                                                     transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
-                                                    className="h-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                                                    className="h-full bg-white"
                                                 />
                                             </div>
-                                            <div className="flex justify-between text-[10px] text-slate-400 mt-1 font-mono">
+                                            <div className="flex justify-between text-[10px] text-white/40 mt-2 font-black uppercase tracking-widest">
                                                 <span>Before: {item.before}</span>
-                                                <span>Target</span>
+                                                <span>AI Achievement</span>
                                             </div>
                                         </div>
 
                                         {/* ROI Highlight */}
-                                        <div className="pt-4 border-t border-slate-200">
-                                            <span className="text-xs text-amber-600 font-mono uppercase tracking-wider">Annual ROI (Est.)</span>
-                                            <p className="text-xl font-bold text-amber-500 mt-1">{item.roi}</p>
+                                        <div className="pt-6 border-t-2 border-white/20">
+                                            <span className="text-xs text-white/50 font-black uppercase tracking-widest">Annual ROI (Est.)</span>
+                                            <p className="text-3xl font-black mt-2 tracking-tighter">{item.roi}</p>
                                         </div>
-
                                     </div>
                                 </div>
                             </motion.div>
@@ -149,9 +139,9 @@ const CaseStudies = () => {
                 </div>
 
                 {/* Disclaimer */}
-                <div className="max-w-5xl mx-auto flex items-start gap-3 p-4 rounded-lg bg-slate-100/50 text-slate-500 text-sm">
-                    <Info className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                    <p>
+                <div className="max-w-5xl mx-auto flex items-start gap-4 p-8 border-4 border-black bg-slate-50 text-black font-bold">
+                    <Info className="w-6 h-6 flex-shrink-0 mt-1" />
+                    <p className="text-sm leading-relaxed">
                         ※ 上記は一般的なAI導入による効果のモデルケース（試算）であり、お客様ごとの具体的な成果を保証するものではありません。<br />
                         貴社の業務内容や課題に合わせて、最適な導入プランと削減シミュレーションを個別に作成いたします。
                     </p>
