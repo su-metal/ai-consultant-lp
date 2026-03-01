@@ -37,7 +37,7 @@ export default function RichHero() {
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
     return (
-        <section ref={containerRef} className="relative w-full overflow-hidden bg-white flex flex-col justify-start pt-32 lg:pt-40 pb-40 lg:pb-60 min-h-[850px] lg:min-h-[950px] border-b-8 border-black">
+        <section ref={containerRef} className="relative w-full overflow-hidden bg-white flex flex-col justify-start pt-20 lg:pt-40 pb-40 lg:pb-60 min-h-[850px] lg:min-h-[950px] border-b-8 border-black">
 
             {/* --- Dynamic Background Layer --- */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-white">
