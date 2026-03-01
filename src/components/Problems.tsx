@@ -66,7 +66,7 @@ const Problems = () => {
                     transition={{ duration: 0.7 }}
                     className="text-center mb-20"
                 >
-                    <div className="inline-flex items-center gap-2 px-6 py-2 bg-black text-white text-sm font-bold mb-6 border-b-4 border-r-4 border-slate-500">
+                    <div className="inline-flex items-center gap-2 px-6 py-2 bg-black text-white text-sm font-bold mb-6 border-b-4 border-r-4 border-[#3B82F6]">
                         <AlertTriangle className="w-4 h-4" />
                         TYPICAL CHALLENGES
                     </div>
@@ -102,7 +102,7 @@ const Problems = () => {
                                     <span className="text-6xl font-black text-black/10 font-sans leading-none group-hover:text-black/20 transition-colors">
                                         0{index + 1}
                                     </span>
-                                    <div className="p-4 bg-black text-white border-b-4 border-r-4 border-slate-500">
+                                    <div className="p-4 bg-black text-white border-b-4 border-r-4 border-[#3B82F6]">
                                         <Icon className="w-8 h-8" />
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ const Problems = () => {
                                 <p className="text-black/80 text-sm font-medium leading-relaxed mb-8 flex-grow">{item.description}</p>
 
                                 {/* Solution */}
-                                <div className="relative p-6 bg-black text-white border-b-8 border-slate-500 transition-transform group-hover:translate-y-1">
+                                <div className="relative p-6 bg-black text-white border-b-8 border-[#3B82F6] transition-transform group-hover:translate-y-1">
                                     <div className="flex items-center gap-2 text-white/60 text-xs font-black font-mono uppercase tracking-widest mb-3">
                                         <Lightbulb className="w-4 h-4 text-white" />
                                         Our Approach
