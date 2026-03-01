@@ -50,7 +50,7 @@ export default function RichHero() {
                     style={{ y: bgY }}
                     className="absolute inset-0 flex items-center justify-center select-none"
                 >
-                    <span className="text-[40vw] lg:text-[50vw] font-black leading-none text-transparent stroke-black/5 stroke-[1px] font-sans tracking-tighter">
+                    <span className="text-[40vw] lg:text-[50vw] font-black leading-none text-transparent stroke-[#3B82F6]/10 stroke-[1px] font-sans tracking-tighter">
                         AI
                     </span>
                 </motion.div>
@@ -65,9 +65,9 @@ export default function RichHero() {
                         repeat: Infinity,
                         ease: "linear"
                     }}
-                    className="absolute inset-0 opacity-[0.1]"
+                    className="absolute inset-0 opacity-[0.05]"
                     style={{
-                        backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
+                        backgroundImage: 'linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)',
                         backgroundSize: '40px 40px'
                     }}
                 />
@@ -84,7 +84,7 @@ export default function RichHero() {
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 rounded-full border-[1px] border-black border-dashed opacity-30"
+                            className="absolute inset-0 rounded-full border-[1px] border-[#3B82F6] border-dashed opacity-40"
                         />
                         <motion.div
                             animate={{ rotate: -360 }}
@@ -92,9 +92,9 @@ export default function RichHero() {
                             className="absolute inset-[10%] rounded-full border-[2px] border-black opacity-20"
                         />
                         <motion.div
-                            animate={{ scale: [1, 1.1, 1] }}
+                            animate={{ scale: [1, 1.05, 1] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-[40%] rounded-full border-[4px] border-black flex items-center justify-center bg-white"
+                            className="absolute inset-[40%] rounded-full border-[4px] border-black flex items-center justify-center bg-white shadow-[0_0_30px_rgba(59,130,246,0.3)]"
                         >
                             <span className="text-6xl sm:text-8xl font-black text-black">AI</span>
                         </motion.div>
@@ -116,8 +116,8 @@ export default function RichHero() {
                         className="inline-flex items-center justify-center gap-3 py-2 px-8 border-4 border-black bg-white text-black text-xs font-black tracking-[0.3em] mb-14 w-fit relative shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
                         <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full bg-black opacity-75 rounded-full"></span>
-                            <span className="relative inline-flex h-3 w-3 bg-black rounded-full"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full bg-[#3B82F6] opacity-75 rounded-full"></span>
+                            <span className="relative inline-flex h-3 w-3 bg-[#3B82F6] rounded-full"></span>
                         </span>
                         STRATEGIC AI INTELLIGENCE
                     </motion.div>
@@ -182,7 +182,7 @@ export default function RichHero() {
                             onMouseLeave={handleMouseLeave}
                             className="w-full sm:w-auto"
                         >
-                            <Link href="/contact" className="btn-primary flex items-center justify-center gap-3 group w-full sm:w-auto px-12 py-6 text-lg shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all">
+                            <Link href="/contact" className="btn-primary flex items-center justify-center gap-3 group w-full sm:w-auto px-12 py-6 text-lg shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(59,130,246,1)] hover:translate-x-0 hover:translate-y-0 active:scale-95 transition-all">
                                 無料相談を予約する
                                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                             </Link>
@@ -190,8 +190,8 @@ export default function RichHero() {
                         <motion.div
                             className="w-full sm:w-auto"
                         >
-                            <Link href="/services" className="btn-secondary flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-6 text-lg border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all">
-                                <Play className="w-5 h-5 fill-black" />
+                            <Link href="/services" className="btn-secondary flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-6 text-lg border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all group">
+                                <Play className="w-5 h-5 fill-black group-hover:fill-[#3B82F6] group-hover:text-[#3B82F6] transition-colors" />
                                 サービス詳細
                             </Link>
                         </motion.div>

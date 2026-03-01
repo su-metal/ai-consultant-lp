@@ -36,7 +36,12 @@
 /* ── Reset ── */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #CBD5E1 transparent; /* Slate 300 */
+  scrollbar-color: #3B82F6 transparent;
+}
+
+::selection {
+  background-color: #3B82F6;
+  color: white;
 }
 
 html {
@@ -174,7 +179,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 24px;
   width: 24px;
   border-radius: 0;
-  background: #000;
+  background: #3B82F6;
   border: 2px solid black;
   margin-top: -9px;
   box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
