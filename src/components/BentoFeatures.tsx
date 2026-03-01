@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Code, Zap, Shield, LineChart, Cpu, ArrowRight } from 'lucide-react';
+import { Bot, Code, Zap, Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function BentoFeatures() {

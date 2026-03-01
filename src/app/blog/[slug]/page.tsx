@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Calendar, Tag, ChevronLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 
 // URLパラメータの型定義 (Next.js 15 用)
 type Props = {
@@ -65,11 +66,13 @@ export default async function BlogPost({ params }: Props) {
                 <article className="bg-white">
                     {/* アイキャッチ画像 */}
                     {postData.image && (
-                        <div className="mb-16 w-full overflow-hidden border-4 border-black bg-slate-50 aspect-[16/9] shadow-[16px_16px_0px_0px_rgba(0,0,0,1)]">
-                            <img
+                        <div className="mb-16 w-full overflow-hidden border-4 border-black bg-slate-50 aspect-[16/9] shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] relative">
+                            <NextImage
                                 src={postData.image}
                                 alt={postData.title}
-                                className="w-full h-full object-cover transition-all duration-700"
+                                fill
+                                priority
+                                className="object-cover transition-all duration-700"
                             />
                         </div>
                     )}

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Smartphone, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
+import { ExternalLink, Smartphone, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 // メインプロダクト（MisePo）

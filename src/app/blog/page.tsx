@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
 import { BookOpen, Image as ImageIcon } from 'lucide-react';
 import { Metadata } from 'next';
@@ -33,10 +34,11 @@ export default function BlogIndex() {
                                 <Link href={`/blog/${slug}`} className="block relative aspect-[1.91/1] overflow-hidden bg-slate-100 border-b-4 border-black">
                                     {/* アイキャッチ画像 */}
                                     {image ? (
-                                        <img
+                                        <NextImage
                                             src={image}
                                             alt={title}
-                                            className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105"
+                                            fill
+                                            className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center bg-black group-hover:scale-105 transition-transform duration-500 ease-out">
