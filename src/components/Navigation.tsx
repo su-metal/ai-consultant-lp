@@ -38,7 +38,7 @@ export default function Navigation() {
         >
             {/* Scroll progress bar - Monochrome */}
             <motion.div
-                className="absolute bottom-0 left-0 h-[4px] bg-[#3B82F6] origin-left opacity-100"
+                className="absolute bottom-0 left-0 h-[4px] bg-black origin-left opacity-100"
                 style={{ scaleX: scrollYProgress, width: '100%' }}
             />
             <div className="container mx-auto px-4 py-2 md:py-4 flex items-center justify-between">

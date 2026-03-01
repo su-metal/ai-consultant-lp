@@ -131,7 +131,7 @@ export default function ContactSection() {
                                     onChange={(event) =>
                                         setFormData((prev) => ({ ...prev, companyName: event.target.value }))
                                     }
-                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] transition-all font-bold"
+                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:bg-black focus:text-white transition-all font-bold"
                                 />
                             </div>
                             <div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
                                     }
                                     required
                                     autoComplete="email"
-                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] transition-all font-bold"
+                                    className="w-full bg-white border-2 border-black p-4 text-black placeholder-black/20 focus:outline-none focus:bg-black focus:text-white transition-all font-bold"
                                 />
                             </div>
                             <div>

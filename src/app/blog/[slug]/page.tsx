@@ -55,9 +55,9 @@ export default async function BlogPost({ params }: Props) {
 
     return (
         <main className="min-h-screen bg-white text-black font-sans pt-32 pb-24 selection:bg-black selection:text-white">
-            <div className="container mx-auto px-4 max-w-4xl">
+            <div className="container mx-auto px-4 max-w-6xl">
                 {/* 戻るリンク */}
-                <div className="mb-12">
+                <div className="mb-12 max-w-3xl mx-auto">
                     <Link href="/blog" className="group inline-flex items-center gap-2 text-black font-black uppercase tracking-widest text-sm hover:underline decoration-4">
                         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> ブログ一覧へ戻る
                     </Link>
@@ -78,8 +78,8 @@ export default async function BlogPost({ params }: Props) {
                     )}
 
                     {/* 記事ヘッダー */}
-                    <header className="mb-16">
-                        <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 text-black leading-tight uppercase">
+                    <header className="mb-16 max-w-3xl mx-auto">
+                        <h1 className="text-2xl md:text-4xl font-black tracking-tighter mb-10 text-black leading-tight uppercase">
                             {postData.title}
                         </h1>
 
@@ -106,19 +106,13 @@ export default async function BlogPost({ params }: Props) {
 
                     {/* 記事本文 (Markdown) */}
                     <div
-                        className="prose prose-zinc prose-lg md:prose-xl max-w-none 
-                        prose-headings:font-black prose-headings:text-black prose-headings:uppercase prose-headings:tracking-tighter
-                        prose-p:leading-relaxed prose-p:text-black prose-p:font-bold
-                        prose-a:text-black prose-a:font-black prose-a:underline prose-a:decoration-4 hover:prose-a:bg-black hover:prose-a:text-white transition-all
-                        prose-img:border-4 prose-img:border-black prose-img:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]
-                        prose-strong:font-black prose-strong:text-black prose-strong:bg-zinc-100 prose-strong:px-1
-                        prose-ul:font-bold prose-li:marker:text-black prose-li:marker:font-black"
+                        className="prose prose-zinc prose-lg md:prose-xl max-w-3xl mx-auto blog-content"
                         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
                     />
                 </article>
 
                 {/* Footer CTA */}
-                <div className="mt-24 p-12 border-4 border-black bg-black text-white shadow-[16px_16px_0px_0px_rgba(255,255,255,1),16px_16px_0px_4px_rgba(0,0,0,1)] text-center">
+                <div className="mt-24 p-12 border-4 border-black bg-black text-white shadow-[16px_16px_0px_0px_rgba(255,255,255,1),16px_16px_0px_4px_rgba(0,0,0,1)] text-center max-w-3xl mx-auto">
                     <p className="text-2xl font-black mb-8 uppercase tracking-widest">この記事について相談する</p>
                     <Link href="/contact" className="group inline-flex items-center gap-3 text-3xl font-black uppercase tracking-tighter hover:underline decoration-4">
                         お問い合わせはこちら
