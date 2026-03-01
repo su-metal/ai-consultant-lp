@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FormEvent, useState } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, Bot } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -67,13 +67,25 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
                     {/* Left */}
                     <div>
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-lg shadow-blue-900/5">
-                                <Bot className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight font-serif">まちなみ AI</h2>
-                                <p className="text-xs text-slate-500 font-mono tracking-widest uppercase mt-1">AI Consulting & Solution</p>
+                        <div className="mb-12">
+                            <div className="flex flex-col cursor-default">
+                                <div className="flex items-baseline leading-none mb-3">
+                                    <span className="text-5xl tracking-tighter text-slate-950 font-medium">
+                                        machinami
+                                    </span>
+                                    <span className="text-5xl tracking-tighter ml-3 font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600">
+                                        AI<span className="text-blue-500">.</span>
+                                    </span>
+                                </div>
+                                <div className="flex items-center opacity-70">
+                                    <span className="text-xs tracking-[0.5em] text-slate-500 font-bold uppercase shrink-0">
+                                        まちなみ
+                                    </span>
+                                    <div className="w-[1px] h-3 bg-slate-300 mx-4" />
+                                    <span className="text-[10px] tracking-[0.3em] text-slate-400 font-bold uppercase">
+                                        Strategic AI Consulting Partner
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
