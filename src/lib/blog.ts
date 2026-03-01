@@ -61,9 +61,12 @@ export async function getPostData(slug: string): Promise<BlogPostData | null> {
 
     const matterResult = matter(fileContents);
 
+    // Convert "■ Heading" to "## Heading" for better semantics and styling
+    const contentWithHeaders = matterResult.content.replace(/^■\s+(.*$)/gm, '## $1');
+
     const processedContent = await remark()
         .use(html)
-        .process(matterResult.content);
+        .process(contentWithHeaders);
         
     const contentHtml = processedContent.toString();
 

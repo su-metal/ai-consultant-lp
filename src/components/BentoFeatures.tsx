@@ -32,7 +32,7 @@ export default function BentoFeatures() {
                         className="md:col-span-2 bg-white border-4 border-black p-8 sm:p-10 relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all"
                     >
                         <div className="relative z-10 h-full flex flex-col" style={{ transform: "translateZ(20px)" }}>
-                            <div className="w-16 h-16 bg-[#3B82F6] text-white flex items-center justify-center mb-10 border-2 border-black group-hover:scale-110 transition-transform">
+                            <div className="w-16 h-16 bg-black text-white flex items-center justify-center mb-10 border-2 border-black group-hover:scale-110 transition-transform">
                                 <Bot className="w-8 h-8" />
                             </div>
                             <h3 className="text-2xl md:text-3xl font-black text-black mb-4">生成AIコンサルティング</h3>
@@ -86,7 +86,7 @@ export default function BentoFeatures() {
                                         initial={{ width: 0 }}
                                         whileInView={{ width: "90%" }}
                                         transition={{ duration: 1.5, delay: 0.5 }}
-                                        className="h-full bg-[#3B82F6] transition-all"
+                                        className="h-full bg-white transition-all"
                                     />
                                 </div>
                                 <div className="h-2 w-full bg-white/20 overflow-hidden">

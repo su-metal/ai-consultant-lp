@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Hero from '@/components/Hero';
+import ServicesHero from '@/components/ServicesHero';
 import Problems from '@/components/Problems';
 import CaseStudies from '@/components/CaseStudies';
 import Subsidies from '@/components/Subsidies';
@@ -10,8 +10,8 @@ import ContactSection from '@/components/ContactSection';
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-black selection:text-white pt-24">
-      <Hero />
+    <main className="min-h-screen bg-white font-sans selection:bg-black selection:text-white">
+      <ServicesHero />
 
       <div className="h-[4px] bg-black" />
 
