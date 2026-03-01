@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { AlertTriangle, UserX, ShieldAlert, BookX, TrendingDown, ArrowRight, Lightbulb } from 'lucide-react';
+import { AlertTriangle, UserX, ShieldAlert, BookX, TrendingDown, Lightbulb } from 'lucide-react';
 
 const problems = [
     {
@@ -47,7 +47,7 @@ const cardVariants = {
         transition: {
             delay: i * 0.15,
             duration: 0.8,
-            ease: [0.33, 1, 0.68, 1] as any,
+            ease: [0.33, 1, 0.68, 1] as [number, number, number, number],
         },
     }),
 };

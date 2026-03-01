@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Factory, Utensils, FileText, ArrowRight, TrendingUp, Info } from 'lucide-react';
+import { Factory, Utensils, FileText, TrendingUp, Info } from 'lucide-react';
 
 const cases = [
     {

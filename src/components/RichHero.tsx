@@ -12,9 +12,8 @@ export default function RichHero() {
         offset: ['start start', 'end start'],
     });
 
-    const [mounted, setMounted] = useState(false);
     useEffect(() => {
-        setMounted(true);
+        // Effects that should run on mount
     }, []);
 
     // Magnetic effect for buttons

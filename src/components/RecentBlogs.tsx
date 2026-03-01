@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
@@ -43,10 +43,11 @@ export default function RecentBlogs() {
                             {/* 画像エリア */}
                             <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b-4 border-black">
                                 {post.image ? (
-                                    <img
+                                    <NextImage
                                         src={post.image}
                                         alt={post.title}
-                                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                                        fill
+                                        className="object-cover transition-all duration-500 group-hover:scale-105"
                                     />
                                 ) : (
                                     <div className="absolute inset-0 flex items-center justify-center bg-black">
