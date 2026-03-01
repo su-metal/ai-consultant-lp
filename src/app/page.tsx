@@ -11,7 +11,7 @@ import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+        <main className="min-h-screen text-black font-sans selection:bg-black selection:text-white">
             {/* 1. Rich Modern Hero Section */}
             <RichHero />
 
