@@ -118,7 +118,7 @@ export default function ContactSection() {
                     {/* Right: Contact Form - Monochrome Bold */}
                     <div className="bg-white border-4 border-black p-8 md:p-12 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)]">
                         <h3 className="text-3xl font-black text-black mb-2 uppercase tracking-tighter">Contact Us</h3>
-                        <p className="text-xs font-black text-black/40 mb-10 uppercase tracking-[0.3em]">30 Minutes Free Consultation</p>
+                        <p className="text-xs font-black text-black/40 mb-10 uppercase tracking-[0.3em]">30分 無料相談</p>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div>

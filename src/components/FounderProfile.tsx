@@ -53,7 +53,7 @@ export default function FounderProfile() {
                                 }}
                                 className="btn-primary px-8 py-4 text-lg w-full md:w-auto text-center font-black uppercase tracking-widest"
                             >
-                                Free Consultation
+                                無料相談
                             </Link>
                             <div className="flex flex-wrap justify-center md:justify-start gap-3">
                                 <span className="px-4 py-1.5 bg-white text-black text-[10px] font-black border-2 border-black uppercase tracking-widest">#AI_Consulting</span>

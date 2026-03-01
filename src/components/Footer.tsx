@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Bot } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -9,10 +8,27 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 pb-12 border-b-2 border-white/20">
                     {/* Brand */}
                     <div className="md:col-span-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <Bot className="w-8 h-8 text-white" />
-                            <span className="text-white font-black text-2xl tracking-tighter uppercase">まちなみ AI</span>
-                        </div>
+                        <Link href="/" className="flex items-center group mb-8 relative w-fit transition-opacity hover:opacity-80">
+                            <div className="flex flex-col">
+                                <div className="flex items-baseline leading-none text-white">
+                                    <span className="text-3xl tracking-tight font-black uppercase">
+                                        machinami
+                                    </span>
+                                    <span className="text-3xl tracking-tight ml-1.5 font-black text-black bg-white px-2 pb-0.5">
+                                        AI
+                                    </span>
+                                </div>
+                                <div className="flex items-center mt-1.5 opacity-60">
+                                    <span className="text-[12px] tracking-[0.3em] font-black uppercase shrink-0 text-white">
+                                        まちなみ
+                                    </span>
+                                    <div className="w-[2px] h-2.5 bg-white mx-2" />
+                                    <span className="text-[10px] tracking-[0.2em] font-black uppercase whitespace-nowrap text-white">
+                                        Strategic Intelligence
+                                    </span>
+                                </div>
+                            </div>
+                        </Link>
                         <p className="text-sm text-white/70 leading-relaxed max-w-sm mb-8 font-bold">
                             「地域企業を、AIで強くする。」<br />
                             東三河を拠点に、生成AIの業務活用支援から専用アプリ開発まで、幅広くサポートします。

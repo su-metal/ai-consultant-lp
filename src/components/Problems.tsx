@@ -38,15 +38,16 @@ const problems = [
 ];
 
 const cardVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    hidden: { opacity: 0, y: 50, scale: 0.9, filter: "blur(10px)" },
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
         scale: 1,
+        filter: "blur(0px)",
         transition: {
-            delay: i * 0.1,
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            delay: i * 0.15,
+            duration: 0.8,
+            ease: [0.33, 1, 0.68, 1] as any,
         },
     }),
 };

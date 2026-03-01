@@ -73,11 +73,11 @@ export default function Navigation() {
                             className={`text-sm font-black transition-colors relative group py-1 uppercase tracking-widest ${pathname === link.href ? 'text-black' : 'text-black/40 hover:text-black'
                                 }`}
                         >
-                            {link.label}
-                            {pathname === link.href && (
-                                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-black" />
-                            )}
-                            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-black transition-all group-hover:w-full" />
+                            <span className="relative z-10 block group-hover:-translate-y-0.5 transition-transform duration-300">
+                                {link.label}
+                            </span>
+                            <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] bg-black transition-all duration-300 ease-out ${pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                                }`} />
                         </Link>
                     ))}
                     <Link

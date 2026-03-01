@@ -107,18 +107,36 @@ const CaseStudies = () => {
                                                 <span>Impact</span>
                                             </div>
                                             <div className="flex items-end gap-3 mb-4">
-                                                <span className="text-5xl font-black tabular-nums">{item.after}</span>
-                                                <span className="text-xs bg-white text-black px-3 py-1 font-black uppercase tracking-tighter">
+                                                <motion.span
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
+                                                    className="text-5xl font-black tabular-nums"
+                                                >
+                                                    {item.after}
+                                                </motion.span>
+                                                <motion.span
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    whileInView={{ opacity: 1, scale: 1 }}
+                                                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                                                    className="text-xs bg-white text-black px-3 py-1 font-black uppercase tracking-tighter"
+                                                >
                                                     {item.reduction}
-                                                </span>
+                                                </motion.span>
                                             </div>
-                                            <div className="w-full h-4 bg-white/10 border-2 border-white/20 overflow-hidden">
+                                            <div className="w-full h-4 bg-white/10 border-2 border-white/20 overflow-hidden relative">
                                                 <motion.div
                                                     initial={{ width: 0 }}
-                                                    whileInView={{ width: '94%' }}
-                                                    transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
-                                                    className="h-full bg-white"
-                                                />
+                                                    whileInView={{ width: index === 0 ? '94%' : index === 1 ? '70%' : '85%' }}
+                                                    transition={{ duration: 1.5, delay: 1 + index * 0.2, ease: [0.33, 1, 0.68, 1] }}
+                                                    className="h-full bg-white relative"
+                                                >
+                                                    <motion.div
+                                                        animate={{ x: ["-100%", "100%"] }}
+                                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent w-1/2"
+                                                    />
+                                                </motion.div>
                                             </div>
                                             <div className="flex justify-between text-[10px] text-white/40 mt-2 font-black uppercase tracking-widest">
                                                 <span>Before: {item.before}</span>
