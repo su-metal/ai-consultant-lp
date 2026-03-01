@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
-import { Bot, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
     { label: 'Top', href: '/' },
@@ -42,13 +42,29 @@ export default function Navigation() {
                 style={{ scaleX: scrollYProgress, width: '100%' }}
             />
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="p-2 rounded-lg bg-blue-600 shadow-md shadow-blue-500/30 group-hover:scale-105 transition-transform">
-                        <Bot className="w-5 h-5 text-white" />
+                <Link href="/" className="flex items-center group py-2 relative">
+                    {/* Hover Glow Effect */}
+                    <div className="absolute -inset-2 bg-blue-50/0 group-hover:bg-blue-50/50 rounded-xl transition-colors duration-300 -z-10" />
+
+                    <div className="flex flex-col transition-all duration-300 group-hover:translate-x-0.5">
+                        <div className="flex items-baseline leading-none">
+                            <span className="text-2xl tracking-tight text-slate-950 font-medium">
+                                machinami
+                            </span>
+                            <span className="text-2xl tracking-tight ml-1.5 font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600">
+                                AI<span className="text-blue-500">.</span>
+                            </span>
+                        </div>
+                        <div className="flex items-center mt-1.5 opacity-60">
+                            <span className="text-[10px] tracking-[0.3em] text-slate-500 font-bold uppercase shrink-0">
+                                まちなみ
+                            </span>
+                            <div className="w-[1px] h-2 bg-slate-300 mx-2" />
+                            <span className="text-[8px] tracking-[0.2em] text-slate-400 font-bold uppercase whitespace-nowrap">
+                                Strategic Intelligence
+                            </span>
+                        </div>
                     </div>
-                    <span className="text-xl font-bold tracking-tight font-serif text-slate-900 transition-colors">
-                        まちなみ AI<span className="text-blue-600">.</span>
-                    </span>
                 </Link>
 
                 {/* Desktop nav */}
