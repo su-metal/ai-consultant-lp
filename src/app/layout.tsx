@@ -65,7 +65,6 @@ export const metadata: Metadata = {
     google: '5XEVbrsXhLYYjSzJG2hLbhe_VLnqJsodV5JKtUrmqYI', // Google Search Console で取得したIDのみを設定
   },
 
-
   alternates: {
     canonical: 'https://machinami-ai.com',
   },
