@@ -11,19 +11,19 @@ export default function Footer() {
                         <Link href="/" className="flex items-center group mb-8 relative w-fit transition-opacity hover:opacity-80">
                             <div className="flex flex-col">
                                 <div className="flex items-baseline leading-none text-white">
-                                    <span className="text-3xl tracking-tight font-black uppercase">
+                                    <span className="text-2xl md:text-3xl tracking-tight font-black uppercase">
                                         machinami
                                     </span>
-                                    <span className="text-3xl tracking-tight ml-1.5 font-black text-black bg-white px-2 pb-0.5">
+                                    <span className="text-2xl md:text-3xl tracking-tight ml-1.5 font-black text-black bg-white px-2 pb-0.5">
                                         AI
                                     </span>
                                 </div>
                                 <div className="flex items-center mt-1.5 opacity-60">
-                                    <span className="text-[12px] tracking-[0.3em] font-black uppercase shrink-0 text-white">
+                                    <span className="text-[10px] md:text-[12px] tracking-[0.3em] font-black uppercase shrink-0 text-white">
                                         まちなみ
                                     </span>
                                     <div className="w-[2px] h-2.5 bg-white mx-2" />
-                                    <span className="text-[10px] tracking-[0.2em] font-black uppercase whitespace-nowrap text-white">
+                                    <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-black uppercase whitespace-nowrap text-white">
                                         Strategic Intelligence
                                     </span>
                                 </div>
