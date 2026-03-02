@@ -3,9 +3,8 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Cpu, Zap, Activity } from 'lucide-react';
-import Link from 'next/link';
 
-/* ── Particle Canvas (Monochrome) ── */
+/* ── Particle Canvas ── */
 function ParticleField() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -17,7 +16,7 @@ function ParticleField() {
 
         let animId: number;
         const particles: { x: number; y: number; vx: number; vy: number; r: number; o: number }[] = [];
-        const COUNT = 40;
+        const COUNT = 60; // Slightly reduced for cleaner look
 
         const resize = () => {
             canvas.width = canvas.offsetWidth * window.devicePixelRatio;
@@ -31,10 +30,10 @@ function ParticleField() {
             particles.push({
                 x: Math.random() * canvas.offsetWidth,
                 y: Math.random() * canvas.offsetHeight,
-                vx: (Math.random() - 0.5) * 0.2,
-                vy: (Math.random() - 0.5) * 0.2,
-                r: Math.random() * 1.5 + 0.5,
-                o: Math.random() * 0.3 + 0.1,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: Math.random() * 2 + 0.5,
+                o: Math.random() * 0.5 + 0.1,
             });
         }
 
@@ -43,13 +42,14 @@ function ParticleField() {
             const w = canvas.offsetWidth;
             const h = canvas.offsetHeight;
 
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-            ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; // Blue 500
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)'; // Faint Blue
 
             particles.forEach((p, i) => {
                 p.x += p.vx;
                 p.y += p.vy;
 
+                // Bounce off walls for controlled movement
                 if (p.x < 0 || p.x > w) p.vx *= -1;
                 if (p.y < 0 || p.y > h) p.vy *= -1;
 
@@ -57,16 +57,17 @@ function ParticleField() {
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                 ctx.fill();
 
+                // Connect particles to form a network
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = p.x - particles[j].x;
                     const dy = p.y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 150) {
+                    if (dist < 120) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.lineWidth = 0.5 * (1 - dist / 150);
+                        ctx.lineWidth = 0.5 * (1 - dist / 120);
                         ctx.stroke();
                     }
                 }
@@ -84,10 +85,18 @@ function ParticleField() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
+            className="absolute inset-0 w-full h-full pointer-events-none"
         />
     );
 }
+
+/* ── Floating Icons ── */
+const floatingIcons = [
+    { Icon: Cpu, x: '10%', y: '20%', delay: 0, size: 28, color: 'text-blue-400' },
+    { Icon: Zap, x: '85%', y: '15%', delay: 1.5, size: 24, color: 'text-amber-400' },
+    { Icon: Sparkles, x: '75%', y: '70%', delay: 3, size: 26, color: 'text-purple-400' },
+    { Icon: Activity, x: '15%', y: '75%', delay: 2, size: 22, color: 'text-emerald-400' },
+];
 
 const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -98,101 +107,120 @@ const Hero = () => {
     const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-    const floatingIcons = [
-        { Icon: Cpu, x: '8%', y: '15%', delay: 0, size: 24 },
-        { Icon: Zap, x: '90%', y: '12%', delay: 1.5, size: 22 },
-        { Icon: Sparkles, x: '88%', y: '75%', delay: 3, size: 20 },
-        { Icon: Activity, x: '12%', y: '80%', delay: 2, size: 18 },
-    ];
-
     return (
-        <section ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-
+        <section ref={containerRef} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-white">
+            {/* Particle background */}
             <ParticleField />
 
-            {/* Floating icons (Monochrome) */}
-            {floatingIcons.map(({ Icon, x, y: fy, delay, size }, i) => (
+            {/* Soft Gradient Background Blobs */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-100/60 blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3 mix-blend-multiply" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-purple-100/60 blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4 mix-blend-multiply" />
+
+            {/* Floating tech icons */}
+            {floatingIcons.map(({ Icon, x, y: fy, delay, size, color }, i) => (
                 <motion.div
                     key={i}
-                    className="absolute text-black pointer-events-none opacity-20 hidden md:block"
+                    className={`absolute ${color} pointer-events-none opacity-60`}
                     style={{ left: x, top: fy }}
-                    animate={{ y: [0, -20, 0], rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 7, repeat: Infinity, delay, ease: 'easeInOut' }}
+                    animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, delay, ease: 'easeInOut' }}
                 >
                     <Icon size={size} />
                 </motion.div>
             ))}
 
-            <motion.div style={{ y, opacity }} className="relative z-10 container mx-auto px-4 py-20 lg:py-32">
-                <div className="max-w-5xl mx-auto text-center">
-                    {/* Badge (Monochrome & Thick Border) */}
+            <motion.div style={{ y, opacity }} className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
+                <div className="max-w-4xl mx-auto text-center">
+                    {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 15 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 py-2.5 px-6 border-2 border-black bg-white text-black text-xs font-black tracking-[0.2em] mb-12 uppercase"
+                        transition={{ duration: 0.6 }}
+                        className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-sm font-medium mb-8 shadow-sm"
                     >
-                        <span className="w-2 h-2 bg-black animate-pulse" />
-                        AI Consulting & Solution
+                        <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                        東三河の中小企業特化型AIコンサルティング
                     </motion.div>
 
-                    {/* Main heading (Bold Monochrome) */}
+                    {/* Main heading */}
                     <motion.h1
-                        initial={{ opacity: 0, y: 25 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-12 tracking-tighter text-black uppercase"
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] mb-8 tracking-tight text-slate-900"
                     >
-                        <span className="block mb-2">AIは「道具」から、</span>
-                        <span className="inline-block bg-black text-white px-6 py-2">
-                            「パートナー」へ
-                        </span>
+                        <motion.span
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="block"
+                        >
+                            AIは「道具」から、
+                        </motion.span>
+                        <motion.span
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+                        >
+                            「パートナー」へ。
+                        </motion.span>
                     </motion.h1>
 
-                    {/* Sub copy (Bold & Clean) */}
+                    {/* Sub copy */}
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg md:text-2xl text-black mb-16 max-w-3xl mx-auto leading-relaxed font-bold"
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed"
                     >
-                        すでに日本の中小企業の半分近くがAI活用を始めています。<br className="hidden md:block" />
-                        私たちはあなたのビジネスに最適なAIの形を提案し、共に実装します。
+                        すでに日本の中小企業の<span className="text-blue-600 font-bold">42.3%</span>がAI活用を始めています。<br className="hidden md:block" />
+                        私たちはその第一歩を、東三河の地で共に歩みます。
                     </motion.p>
 
-                    {/* CTA section (Bold Buttons w/ Shadows) */}
+                    {/* Stats bar */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="modern-card p-6 mb-12 max-w-xl mx-auto"
                     >
-                        <Link
-                            href="#contact"
-                            className="group relative px-10 py-5 bg-black text-white font-black text-lg uppercase tracking-widest border-4 border-black transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.3)] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] flex items-center gap-3"
-                        >
-                            無料相談を予約
-                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        <div className="flex items-center justify-center gap-4 flex-wrap">
+                            <div className="flex items-center gap-2">
+                                <div className="p-1 rounded-full bg-emerald-100">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                                </div>
+                                <span className="text-slate-600 text-sm font-medium">
+                                    導入企業の<span className="text-slate-900 font-bold text-lg mx-1 counter-value">90%+</span>が業務効率化を実現
+                                </span>
+                            </div>
+                        </div>
+                    </motion.div>
 
-                        <Link
-                            href="#problems"
-                            className="px-10 py-5 bg-white text-black font-black text-lg uppercase tracking-widest border-4 border-black hover:bg-black hover:text-white transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none translate-x-1 translate-y-1"
-                        >
-                            課題から探す
-                        </Link>
+                    {/* CTA buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                        className="flex flex-col sm:flex-row gap-4 justify-center"
+                    >
+                        <button className="btn-primary group relative overflow-hidden">
+                            <span className="relative z-10 flex items-center justify-center gap-2">
+                                無料相談を予約する
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </button>
+                        <button className="px-8 py-3 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-full font-bold text-slate-600 hover:text-slate-900 transition-all shadow-sm">
+                            サービス詳細
+                        </button>
                     </motion.div>
                 </div>
             </motion.div>
 
-            {/* Bottom thick border */}
-            <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-black" />
+            {/* Bottom fade - White to Transparent */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
         </section>
     );
 };
 
 export default Hero;
-

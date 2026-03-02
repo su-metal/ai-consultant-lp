@@ -2,9 +2,8 @@ import React from 'react';
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { Calendar, Tag, ChevronLeft, ArrowRight } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
-import NextImage from 'next/image';
 
 // URLパラメータの型定義 (Next.js 15 用)
 type Props = {
@@ -55,46 +54,42 @@ export default async function BlogPost({ params }: Props) {
 
     return (
         <main className="min-h-screen bg-white text-slate-900 font-sans pt-24 pb-20">
-            <div className="container mx-auto px-8 max-w-3xl">
+            <div className="container mx-auto px-4 max-w-3xl">
                 {/* 戻るリンク */}
-                <div className="mb-12 max-w-3xl mx-auto">
-                    <Link href="/blog" className="group inline-flex items-center gap-2 text-black font-black uppercase tracking-widest text-sm hover:underline decoration-4">
-                        <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> ブログ一覧へ戻る
+                <div className="mb-8">
+                    <Link href="/blog" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors text-sm">
+                        <ChevronLeft className="w-4 h-4" /> ブログ一覧へ戻る
                     </Link>
                 </div>
 
                 <article className="bg-white">
                     {/* アイキャッチ画像 */}
                     {postData.image && (
-                        <div className="mb-16 w-full overflow-hidden border-4 border-black bg-slate-50 aspect-[16/9] shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] relative">
-                            <NextImage
+                        <div className="mb-10 w-full overflow-hidden rounded-2xl md:rounded-3xl bg-slate-50 aspect-[16/9]">
+                            <img
                                 src={postData.image}
                                 alt={postData.title}
-                                fill
-                                priority
-                                className="object-cover transition-all duration-700"
+                                className="w-full h-full object-cover"
                             />
                         </div>
                     )}
 
                     {/* 記事ヘッダー */}
-                    <header className="mb-16 max-w-3xl mx-auto">
-                        <h1 className="text-2xl md:text-4xl font-black tracking-tighter mb-10 text-black leading-tight uppercase">
+                    <header className="mb-12">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-slate-900 leading-tight">
                             {postData.title}
                         </h1>
 
-                        <div className="flex flex-wrap items-center justify-between gap-6 pb-10 border-b-4 border-black mt-12">
-                            <time dateTime={postData.date} className="flex items-center gap-2 font-black font-mono text-black/40 uppercase tracking-widest">
-                                <Calendar className="w-4 h-4" />
+                        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500 pb-6 border-b border-gray-100 mt-8">
+                            <time dateTime={postData.date} className="flex items-center gap-1.5 font-mono">
                                 {new Date(postData.date).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
                             </time>
 
                             {postData.tags && postData.tags.length > 0 && (
-                                <div className="flex items-center gap-3">
-                                    <Tag className="w-4 h-4 text-black/40" />
+                                <div className="flex items-center gap-2">
                                     <div className="flex flex-wrap gap-2">
                                         {postData.tags.map(tag => (
-                                            <span key={tag} className="text-white bg-black font-black uppercase tracking-widest px-3 py-1 text-[10px] border-b-2 border-r-2 border-slate-500">
+                                            <span key={tag} className="text-slate-500 bg-slate-100 rounded px-2 py-0.5 text-xs border border-transparent">
                                                 {tag}
                                             </span>
                                         ))}
@@ -106,19 +101,10 @@ export default async function BlogPost({ params }: Props) {
 
                     {/* 記事本文 (Markdown) */}
                     <div
-                        className="prose prose-slate prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:leading-loose prose-p:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl prose-h2:border-l-4 prose-h2:border-blue-500 prose-h2:pl-4 prose-h2:py-1 prose-h3:border-l-2 prose-h3:border-slate-300 prose-h3:pl-3"
+                        className="prose prose-slate prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:leading-loose prose-p:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl"
                         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
                     />
                 </article>
-
-                {/* Footer CTA */}
-                <div className="mt-24 p-12 border-4 border-black bg-black text-white shadow-[16px_16px_0px_0px_rgba(255,255,255,1),16px_16px_0px_4px_rgba(0,0,0,1)] text-center max-w-3xl mx-auto">
-                    <p className="text-2xl font-black mb-8 uppercase tracking-widest">この記事について相談する</p>
-                    <Link href="/contact" className="group inline-flex items-center gap-3 text-3xl font-black uppercase tracking-tighter hover:underline decoration-4">
-                        お問い合わせはこちら
-                        <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
-                    </Link>
-                </div>
             </div>
         </main>
     );
