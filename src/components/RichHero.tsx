@@ -147,7 +147,7 @@ export default function RichHero() {
                                 ))}
                             </span>
                         </div>
-                    </h1>
+                    </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0 }}
