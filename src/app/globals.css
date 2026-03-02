@@ -1,32 +1,30 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography"; 
 :root {
-  /* Monochrome Palette with Analog Warmth */
-  --bg-primary: #FBFBFA; /* Warm Off-white / Paper texture base */
-  --bg-secondary: #000000;
-  --bg-tertiary: #F1F1EF; /* Slightly deeper tone for depth */
+  /* Modern Clean Palette */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC; /* Slate 50 */
+  --bg-tertiary: #F1F5F9;  /* Slate 100 */
 
   /* Text Colors */
-  --text-primary: #1A1A1A; /* Not pure black for better readability on warm white */
-  --text-secondary: #000000;
-  --text-tertiary: #64748B;
+  --text-primary: #0F172A;   /* Slate 900 */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-tertiary: #94A3B8;  /* Slate 400 */
 
-  /* Accent (Monochrome) */
-  --accent-black: #000000;
-  --accent-white: #FBFBFA;
+  /* Accents */
+  --accent-blue: #3B82F6;    /* Blue 500 */
+  --accent-indigo: #6366F1;  /* Indigo 500 */
+  --accent-cyan: #06B6D4;    /* Cyan 500 */
+  --accent-gradient: linear-gradient(135deg, #3B82F6, #6366F1);
   
   /* Borders */
-  --border-thick: 2px solid #000000;
-  --border-thicker: 4px solid #000000;
+  --border-light: #E2E8F0;   /* Slate 200 */
 
-  /* Borders / Radii - Adding subtle softness */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-
-  /* Shadows (Minimalistic but softer) */
-  --shadow-sm: 2px 2px 0px 0px rgba(0,0,0,1);
-  --shadow-md: 4px 4px 0px 0px rgba(0,0,0,1);
-  --shadow-lg: 8px 8px 0px 0px rgba(0,0,0,1);
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
 }
 
 @theme inline {
@@ -34,18 +32,12 @@
   --color-foreground: var(--text-primary);
   --font-sans: var(--font-plus-jakarta);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --border-color-primary: #000000;
 }
 
 /* ── Reset ── */
 * {
   scrollbar-width: thin;
   scrollbar-color: #CBD5E1 transparent; /* Slate 300 */
-}
-
-::selection {
-  background-color: #000000;
-  color: #FFFFFF;
 }
 
 html {
@@ -74,82 +66,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mesh-gradient {
-  background-color: var(--bg-primary);
+  background-color: #FFFFFF;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(30,30%,90%,0.5) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(210,20%,90%,0.5) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(0,0%,90%,0.5) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(45,20%,95%,0.5) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(217,91%,93%,1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(186,100%,94%,1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(274,90%,96%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(200,90%,96%,1) 0px, transparent 50%);
 }
 
-/* ── Grainy Texture Overlay ── */
-.grainy-overlay {
-  position: relative;
-}
-
-.grainy-overlay::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  z-index: 10;
-}
-
-/* ── Modern Card (Monochrome & Thick Border) ── */
+/* ── Modern Card ── */
 .modern-card {
   background: white;
-  border: 2px solid black;
-  border-radius: var(--radius-sm); /* Subtle softness */
+  border: 1px solid var(--border-light);
+  border-radius: 1rem;
   box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modern-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: translateY(-2px);
+  border-color: #BFDBFE; /* Blue 200 */
 }
 
-/* ── Buttons (Black/White Inversion) ── */
+/* ── Buttons ── */
 .btn-primary {
-  background: black;
+  background: var(--accent-gradient);
   color: white;
-  border: 2px solid black;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
+  border-radius: 9999px;
+  font-weight: 600;
   padding: 0.75rem 1.5rem;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: white;
-  color: black;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-secondary {
-  background: white;
-  color: black;
-  border: 2px solid black;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: black;
-  color: white;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
 }
 
 /* ── Typography Utilities ── */
 .text-gradient {
-  /* Simple black for text gradient fallback */
-  color: black;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ── Animations ── */
@@ -192,113 +153,30 @@ input[type="range"] {
   width: 100%;
 }
 input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px;
+  height: 6px;
   background: #E2E8F0;
-  border: 2px solid black;
+  border-radius: 999px;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 24px;
-  width: 24px;
-  border-radius: 0;
-  background: #000;
-  border: 2px solid black;
-  margin-top: -9px;
-  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--accent-blue);
+  margin-top: -7px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: all 0.2s;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+  transform: scale(1.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
 /* ── Section Divider ── */
 .section-divider {
-  height: 4px;
-  background: black;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
   margin-top: 4rem;
   margin-bottom: 4rem;
-}
-
-/* ── Blog Content Typography (Zebra Style) ── */
-.blog-content {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 768px) {
-  .blog-content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-.blog-content h2 {
-  font-size: 1.5rem !important; /* 24px on mobile */
-  line-height: 1.25 !important;
-  font-weight: 900 !important;
-  color: var(--text-primary) !important;
-  border-left: 4px solid black !important;
-  padding-left: 1rem !important;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-  background-color: var(--bg-tertiary) !important; /* paper-like tone */
-  margin-top: 3.5rem !important;
-  margin-bottom: 1.5rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: -0.025em !important;
-}
-
-@media (min-width: 768px) {
-  .blog-content h2 {
-    font-size: 2rem !important; /* 32px on desktop */
-    padding-left: 1.5rem !important;
-  }
-}
-
-.blog-content h3 {
-  font-size: 1.25rem !important;
-  font-weight: 900 !important;
-  color: black !important;
-  border-bottom: 2px solid black !important;
-  padding-bottom: 0.25rem !important;
-  width: fit-content !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 1.25rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: -0.01em !important;
-}
-
-.blog-content p {
-  line-height: 1.8 !important;
-  margin-bottom: 1.5rem !important;
-  font-weight: 500 !important; /* Standard font weight for readability */
-}
-
-.blog-content strong {
-  font-weight: 900 !important;
-  background-color: var(--bg-tertiary);
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
-}
-
-.blog-content ul {
-  list-style-type: none !important;
-  padding-left: 0 !important;
-  margin-bottom: 2rem !important;
-}
-
-.blog-content li {
-  position: relative !important;
-  padding-left: 1.5rem !important;
-  margin-bottom: 0.75rem !important;
-  font-weight: 500 !important;
-}
-
-.blog-content li::before {
-  content: "→" !important;
-  position: absolute !important;
-  left: 0 !important;
-  font-weight: 900 !important;
-  color: black !important;
 }

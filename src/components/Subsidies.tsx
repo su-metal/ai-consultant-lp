@@ -10,6 +10,9 @@ const Subsidies = () => {
 
     return (
         <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-white">
+            <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-100/50 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 mix-blend-multiply" />
+            <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
+
             <div className="container mx-auto px-4 relative z-10">
                 {/* Header */}
                 <motion.div
@@ -18,54 +21,56 @@ const Subsidies = () => {
                     transition={{ duration: 0.7 }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-6 py-2 bg-black text-white text-sm font-bold mb-6 border-b-4 border-r-4 border-slate-500">
-                        <Coins className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-amber-600 text-sm font-medium mb-6 shadow-sm">
+                        <Coins className="w-4 h-4 text-amber-500" />
                         PUBLIC SUPPORT
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-black uppercase">
-                        公的な支援を味方に
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-slate-900">
+                        <span className="">公的な支援を味方に</span>
                         <br />
-                        <span className="bg-black text-white px-4 py-1 inline-block mt-2">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
                             賢い投資計画を
                         </span>
                     </h2>
-                    <p className="text-xl text-black max-w-2xl mx-auto font-bold leading-relaxed">
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
                         無理のない投資で、確実な成果を。<br className="hidden md:block" />
-                        愛知県・国の補助金を活用し、貴社に最適な<span className="underline decoration-4">伴走型プラン</span>を共に立てます。
+                        愛知県・国の補助金を活用し、貴社に最適な<span className="text-blue-600 font-bold">伴走型プラン</span>を共に立てます。
                     </p>
                 </motion.div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {/* DX Subsidy */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="bg-white border-4 border-black p-10 relative overflow-hidden group transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                        className="modern-card p-10 relative overflow-hidden group"
                     >
-                        <div className="flex items-start gap-6 mb-8">
-                            <div className="p-4 bg-black text-white border-b-4 border-r-4 border-slate-500">
-                                <Landmark className="w-10 h-10" />
+                        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500" />
+
+                        <div className="flex items-start gap-5 mb-8">
+                            <div className="p-3 rounded-xl bg-blue-50 border border-blue-100 px-4">
+                                <Landmark className="w-8 h-8 text-blue-600" />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-black mb-1 uppercase tracking-tighter">あいちDX推進補助金</h3>
-                                <p className="text-xs text-black/40 font-black font-mono tracking-widest uppercase">AICHI DX PROMOTION</p>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-1">あいちDX推進補助金</h3>
+                                <p className="text-xs text-blue-500 font-mono tracking-wider font-semibold">AICHI DX PROMOTION</p>
                             </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
-                            <div className="flex justify-between items-center p-5 bg-black text-white border-b-4 border-slate-500">
-                                <span className="text-sm font-black uppercase tracking-widest text-white/60">補助上限額</span>
-                                <span className="text-2xl font-black font-mono">500<span className="text-sm font-sans ml-1">万円</span></span>
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-slate-50 border border-slate-100 group-hover:border-blue-200 transition-colors">
+                                <span className="text-sm text-slate-500 font-medium">補助上限額</span>
+                                <span className="text-xl font-bold text-slate-900 font-mono">500<span className="text-sm font-sans ml-1 text-slate-500">万円</span></span>
                             </div>
-                            <div className="flex justify-between items-center p-5 bg-black text-white border-b-4 border-slate-500">
-                                <span className="text-sm font-black uppercase tracking-widest text-white/60">補助率</span>
-                                <span className="text-2xl font-black font-mono">2/3<span className="text-sm font-sans ml-1">以内</span></span>
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-slate-50 border border-slate-100 group-hover:border-blue-200 transition-colors">
+                                <span className="text-sm text-slate-500 font-medium">補助率</span>
+                                <span className="text-xl font-bold text-slate-900 font-mono">2/3<span className="text-sm font-sans ml-1 text-slate-500">以内</span></span>
                             </div>
                         </div>
 
-                        <p className="text-black/80 font-bold leading-relaxed border-t-4 border-black pt-8">
+                        <p className="text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-6">
                             AI導入による業務効率化、新ビジネス創出にかかる費用を大幅に圧縮。県内企業に特化した手厚い支援スキームです。
                         </p>
                     </motion.div>
@@ -75,33 +80,35 @@ const Subsidies = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.4 }}
-                        className="bg-white border-4 border-black p-10 relative overflow-hidden group transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                        className="modern-card p-10 relative overflow-hidden group"
                     >
-                        <div className="flex items-start gap-6 mb-8">
-                            <div className="p-4 bg-black text-white border-b-4 border-r-4 border-slate-500">
-                                <Landmark className="w-10 h-10" />
+                        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
+
+                        <div className="flex items-start gap-5 mb-8">
+                            <div className="p-3 rounded-xl bg-amber-50 border border-amber-100 px-4">
+                                <Landmark className="w-8 h-8 text-amber-600" />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-black mb-1 uppercase tracking-tighter">IT導入補助金</h3>
-                                <p className="text-xs text-black/40 font-black font-mono tracking-widest uppercase">IT INTRODUCTION</p>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-1">IT導入補助金</h3>
+                                <p className="text-xs text-amber-600 font-mono tracking-wider font-semibold">IT INTRODUCTION</p>
                             </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
-                            <div className="flex justify-between items-center p-5 bg-black text-white border-b-4 border-slate-500">
-                                <span className="text-sm font-black uppercase tracking-widest text-white/60">ソフトウェア費</span>
-                                <span className="text-2xl font-black">対象</span>
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-slate-50 border border-slate-100 group-hover:border-amber-200 transition-colors">
+                                <span className="text-sm text-slate-500 font-medium">ソフトウェア費</span>
+                                <span className="text-xl font-bold text-slate-900">対象</span>
                             </div>
-                            <div className="flex justify-between items-center p-5 bg-black text-white border-b-4 border-slate-500">
-                                <span className="text-sm font-black uppercase tracking-widest text-white/60">採択実績</span>
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-slate-50 border border-slate-100 group-hover:border-amber-200 transition-colors">
+                                <span className="text-sm text-slate-500 font-medium">採択実績</span>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="w-6 h-6 text-white" />
-                                    <span className="text-2xl font-black">多数</span>
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                                    <span className="text-slate-900 font-bold">多数</span>
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-black/80 font-bold leading-relaxed border-t-4 border-black pt-8">
+                        <p className="text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-6">
                             ツール導入費用の負担を軽減。申請手続きから実績報告まで、採択率を高めるためのノウハウを提供します。
                         </p>
                     </motion.div>
@@ -112,12 +119,12 @@ const Subsidies = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="mt-16 text-center"
+                    className="mt-12 text-center"
                 >
-                    <p className="text-black/60 mb-6 font-black uppercase tracking-widest text-sm">補助金の申請サポートも行っております</p>
-                    <button className="group relative px-10 py-5 bg-black text-white font-black text-lg uppercase tracking-wider border-b-4 border-r-4 border-slate-500 hover:translate-x-1 hover:translate-y-1 hover:border-b-0 hover:border-r-0 transition-all flex items-center gap-3 mx-auto">
+                    <p className="text-slate-500 mb-4 font-medium">補助金の申請サポートも行っております</p>
+                    <button className="group inline-flex items-center gap-2 px-8 py-4 rounded-full border border-indigo-200 bg-indigo-50 text-indigo-600 font-bold hover:bg-indigo-100 hover:border-indigo-300 transition-all shadow-sm">
                         補助金について相談する
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
                 </motion.div>
             </div>
