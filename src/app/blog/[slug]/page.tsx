@@ -54,7 +54,7 @@ export default async function BlogPost({ params }: Props) {
 
     return (
         <main className="min-h-screen bg-white text-slate-900 font-sans pt-24 pb-20">
-            <div className="container mx-auto px-4 max-w-3xl">
+            <div className="container mx-auto px-8 max-w-3xl">
                 {/* 戻るリンク */}
                 <div className="mb-8">
                     <Link href="/blog" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors text-sm">

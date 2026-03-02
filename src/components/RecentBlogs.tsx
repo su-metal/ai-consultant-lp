@@ -24,7 +24,7 @@ export default function RecentBlogs() {
                             <BookOpen className="w-4 h-4 text-blue-500" />
                             Articles
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+                        <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-bold text-slate-900 leading-[1.12] tracking-[-0.02em] mb-4">
                             お役立ち情報・事例
                         </h2>
                         <p className="text-slate-600">

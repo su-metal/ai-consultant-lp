@@ -12,7 +12,7 @@ export default function BentoFeatures() {
 
             <div className="container mx-auto px-4 relative z-10 max-w-6xl">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-4">
+                    <h2 className="text-[clamp(2rem,4.2vw,3.4rem)] font-black text-slate-900 tracking-[-0.02em] leading-[1.1] mb-5">
                         AI活用とシステム開発で<br className="md:hidden" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">ビジネスの課題を解決</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">

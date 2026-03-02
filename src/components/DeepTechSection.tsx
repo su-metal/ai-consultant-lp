@@ -60,7 +60,7 @@ export default function DeepTechSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6"
+                    className="text-[clamp(2.1rem,5vw,4rem)] font-black text-slate-900 tracking-[-0.025em] leading-[1.06] mb-7"
                 >
                     日々の業務がもっと<br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">スムーズで快適に</span>

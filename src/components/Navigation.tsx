@@ -55,7 +55,7 @@ export default function Navigation() {
                                 AI<span className="text-blue-500">.</span>
                             </span>
                         </div>
-                        <div className="flex items-center mt-1.5 opacity-60">
+                        <div className="flex items-center opacity-60">
                             <span className="text-[10px] tracking-[0.3em] text-slate-500 font-bold uppercase shrink-0">
                                 まちなみ
                             </span>

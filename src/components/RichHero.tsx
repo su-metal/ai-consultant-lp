@@ -199,7 +199,7 @@ export default function RichHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black tracking-tighter text-slate-900 mb-6 font-sans leading-[1.05] drop-shadow-md flex flex-col items-center"
+                        className="text-[clamp(3rem,9vw,6.8rem)] font-black tracking-[-0.04em] text-slate-900 mb-7 font-sans leading-[0.98] drop-shadow-md flex flex-col items-center"
                     >
                         <span className="block mb-2 text-slate-800">未来の技術を、</span>
                         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 pb-2 relative">

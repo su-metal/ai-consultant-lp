@@ -58,7 +58,7 @@ const MissionSection = () => {
 
                     {/* メインメッセージ */}
                     <motion.div variants={itemVariants} className="text-center md:text-left mb-8">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+                        <h2 className="text-[clamp(2.2rem,4.8vw,3.9rem)] font-bold leading-[1.08] tracking-[-0.02em] mb-7">
                             <span className="block mb-2 text-slate-900">地域企業を、</span>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                                 AIで強くする。

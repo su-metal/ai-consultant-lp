@@ -31,7 +31,7 @@ const SubsidyBanner = () => {
                                 <span>Cost Reduction</span>
                             </div>
 
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-relaxed">
+                            <h3 className="text-[clamp(1.9rem,3.8vw,3.1rem)] font-bold mb-5 leading-[1.12] tracking-[-0.02em]">
                                 補助金活用で、AI導入の<br className="hidden md:block" />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500 border-b-[3px] border-amber-200 pb-1">コスト不安を払拭</span>します。
                             </h3>

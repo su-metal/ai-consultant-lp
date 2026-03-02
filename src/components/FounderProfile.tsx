@@ -31,7 +31,7 @@ export default function FounderProfile() {
 
                     <div className="text-center md:text-left flex-1 relative z-10">
                         <div className="mb-3 text-blue-600 font-mono tracking-widest text-xs font-bold uppercase">About Founder</div>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 leading-tight">
+                        <h3 className="text-[clamp(2rem,3.8vw,3rem)] font-bold mb-5 text-slate-900 leading-[1.12] tracking-[-0.02em]">
                             佐田 真教 <span className="text-xl font-normal text-slate-500 ml-2">Masanori Sada</span>
                         </h3>
                         <div className="text-slate-600 text-sm leading-relaxed mb-6 font-medium space-y-3">
