@@ -122,21 +122,15 @@ export default function RichHero() {
                         STRATEGIC AI INTELLIGENCE
                     </motion.div>
 
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] font-black tracking-tighter text-black mb-12 font-sans leading-[0.85] flex flex-col items-center ml-4 sm:ml-0">
-                        <span className="block mb-2 overflow-hidden py-2 px-4">
-                            <span className="inline-block whitespace-nowrap">
-                                {sentence1.split("").map((char, i) => (
-                                    <motion.span
-                                        key={i}
-                                        initial={{ y: "110%", rotate: 10 }}
-                                        animate={{ y: 0, rotate: 0 }}
-                                        transition={{ duration: 1, delay: 0.4 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
-                                        className={`inline-block ${char === "、" ? "text-[0.6em] translate-y-[-0.2em]" : ""}`}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                ))}
-                            </span>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-[clamp(3rem,9vw,6.8rem)] font-black tracking-[-0.04em] text-slate-900 mb-7 font-sans leading-[0.98] drop-shadow-md flex flex-col items-center"
+                    >
+                        <span className="block mb-2 text-slate-800">未来の技術を、</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 pb-2 relative">
+                            今の現場へ。
                         </span>
                         <div className="bg-black text-white px-8 pt-4 pb-6 overflow-hidden flex transform -rotate-1 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]">
                             <span className="inline-block whitespace-nowrap">
@@ -156,10 +150,10 @@ export default function RichHero() {
                     </h1>
 
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1.8 }}
-                        className="text-lg sm:text-xl md:text-2xl text-black max-w-3xl leading-relaxed font-bold mb-16 text-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="text-lg sm:text-xl md:text-2xl text-slate-700 max-w-3xl leading-relaxed font-bold mt-10 mb-8 text-center relative drop-shadow-sm"
                     >
                         <span className="bg-white/80 backdrop-blur-sm px-2">
                             ChatGPTなどの生成AI活用から、業務アプリ開発まで。

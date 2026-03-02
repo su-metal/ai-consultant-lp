@@ -54,8 +54,8 @@ export default async function BlogPost({ params }: Props) {
     }
 
     return (
-        <main className="min-h-screen bg-white text-black font-sans pt-32 pb-24 selection:bg-black selection:text-white">
-            <div className="container mx-auto px-4 max-w-6xl">
+        <main className="min-h-screen bg-white text-slate-900 font-sans pt-24 pb-20">
+            <div className="container mx-auto px-8 max-w-3xl">
                 {/* 戻るリンク */}
                 <div className="mb-12 max-w-3xl mx-auto">
                     <Link href="/blog" className="group inline-flex items-center gap-2 text-black font-black uppercase tracking-widest text-sm hover:underline decoration-4">
@@ -106,7 +106,7 @@ export default async function BlogPost({ params }: Props) {
 
                     {/* 記事本文 (Markdown) */}
                     <div
-                        className="prose prose-zinc prose-lg md:prose-xl max-w-3xl mx-auto blog-content"
+                        className="prose prose-slate prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:leading-loose prose-p:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl prose-h2:border-l-4 prose-h2:border-blue-500 prose-h2:pl-4 prose-h2:py-1 prose-h3:border-l-2 prose-h3:border-slate-300 prose-h3:pl-3"
                         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
                     />
                 </article>

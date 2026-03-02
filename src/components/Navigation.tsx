@@ -52,8 +52,8 @@ export default function Navigation() {
                                 AI
                             </span>
                         </div>
-                        <div className="flex items-center mt-1.5 opacity-80">
-                            <span className="text-[10px] tracking-[0.3em] text-black font-black uppercase shrink-0">
+                        <div className="flex items-center opacity-60">
+                            <span className="text-[10px] tracking-[0.3em] text-slate-500 font-bold uppercase shrink-0">
                                 まちなみ
                             </span>
                             <div className="w-[2px] h-2 bg-black mx-2" />
