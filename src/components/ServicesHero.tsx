@@ -1,20 +1,16 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Target } from 'lucide-react';
 import Link from 'next/link';
 
-export default function RichHero() {
+export default function ServicesHero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start start', 'end start'],
     });
-
-    useEffect(() => {
-        // Effects that should run on mount
-    }, []);
 
     // Magnetic effect for buttons
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -27,10 +23,10 @@ export default function RichHero() {
     };
     const handleMouseLeave = () => setMousePos({ x: 0, y: 0 });
 
-    const sentence1 = "未来の技術を、";
-    const sentence2 = "今の現場へ。";
+    const sentence1 = "その課題に、";
+    const sentence2 = "最適解を。";
 
-    // Parallax Effects
+    // Parallax & Motion Effects (Synced with RichHero)
     const textY = useTransform(scrollYProgress, [0, 1], [0, 150]);
     const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
     const bgY = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -39,7 +35,7 @@ export default function RichHero() {
     return (
         <section ref={containerRef} className="relative w-full overflow-hidden bg-white flex flex-col justify-start pt-20 lg:pt-28 pb-40 lg:pb-60 min-h-[850px] lg:min-h-[950px] border-b-8 border-black">
 
-            {/* --- Dynamic Background Layer --- */}
+            {/* --- Dynamic Background Layer (Synced with RichHero) --- */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-white">
 
                 {/* 1. Grain Texture Overlay */}
@@ -50,8 +46,8 @@ export default function RichHero() {
                     style={{ y: bgY }}
                     className="absolute inset-0 flex items-center justify-center select-none"
                 >
-                    <span className="text-[40vw] lg:text-[50vw] font-black leading-none text-transparent stroke-black/5 stroke-[1px] font-sans tracking-tighter">
-                        AI
+                    <span className="text-[25vw] lg:text-[30vw] font-black leading-none text-transparent stroke-black/5 stroke-[1px] font-sans tracking-tighter uppercase">
+                        SOLUTIONS
                     </span>
                 </motion.div>
 
@@ -65,7 +61,7 @@ export default function RichHero() {
                         repeat: Infinity,
                         ease: "linear"
                     }}
-                    className="absolute inset-0 opacity-[0.1]"
+                    className="absolute inset-0 opacity-[0.05]"
                     style={{
                         backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
                         backgroundSize: '40px 40px'
@@ -74,13 +70,12 @@ export default function RichHero() {
 
                 <div className="absolute inset-0 bg-white/30 backdrop-blur-[10px]" />
 
-                {/* 4. Enhanced AI Core Visualization */}
-                <div className="absolute inset-0 w-full h-full pointer-events-none z-10 flex items-center justify-center opacity-20">
+                {/* 4. Tech Orbit Visualization (Synced with RichHero) */}
+                <div className="absolute inset-0 w-full h-full pointer-events-none z-10 flex items-center justify-center opacity-10">
                     <motion.div
                         style={{ rotate }}
-                        className="relative w-full max-w-[500px] lg:max-w-[900px] aspect-square flex items-center justify-center pointer-events-none"
+                        className="relative w-full max-w-[600px] lg:max-w-[1000px] aspect-square flex items-center justify-center pointer-events-none"
                     >
-                        {/* Multiple rotating rings */}
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -91,48 +86,46 @@ export default function RichHero() {
                             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                             className="absolute inset-[10%] rounded-full border-[2px] border-black opacity-20"
                         />
-                        <motion.div
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-[40%] rounded-full border-[4px] border-black flex items-center justify-center bg-white"
-                        >
-                            <span className="text-6xl sm:text-8xl font-black text-black">AI</span>
-                        </motion.div>
                     </motion.div>
                 </div>
             </div>
 
             <div className="container mx-auto px-4 lg:px-8 relative z-20 h-full flex flex-col items-center justify-center mt-12">
 
-                {/* --- Text & CTA content --- */}
+                {/* --- Content Area --- */}
                 <motion.div
                     style={{ y: textY, opacity }}
                     className="flex flex-col items-center text-center w-full max-w-6xl mx-auto z-30"
                 >
+                    {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
                         className="inline-flex items-center justify-center gap-3 py-2 px-8 border-4 border-black bg-white text-black text-xs font-black tracking-[0.3em] mb-14 w-fit relative shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                     >
-                        <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full bg-black opacity-75 rounded-full"></span>
-                            <span className="relative inline-flex h-3 w-3 bg-black rounded-full"></span>
-                        </span>
-                        STRATEGIC AI INTELLIGENCE
+                        <Target className="w-4 h-4" />
+                        PROFESSIONAL SERVICES
                     </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-[clamp(3rem,9vw,6.8rem)] font-black tracking-[-0.04em] text-slate-900 mb-7 font-sans leading-[0.98] drop-shadow-md flex flex-col items-center"
-                    >
-                        <span className="block mb-2 text-slate-800">未来の技術を、</span>
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 pb-2 relative">
-                            今の現場へ。
+                    {/* Main H1 - Heavy Typography (Synced with RichHero) */}
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter text-black mb-12 font-sans leading-[0.85] flex flex-col items-center">
+                        <span className="block mb-4 overflow-hidden py-2 px-4 whitespace-nowrap">
+                            <span className="inline-block whitespace-nowrap">
+                                {sentence1.split("").map((char, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ y: "110%", rotate: 10 }}
+                                        animate={{ y: 0, rotate: 0 }}
+                                        transition={{ duration: 1, delay: 0.4 + i * 0.04, ease: [0.33, 1, 0.68, 1] }}
+                                        className="inline-block"
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </span>
                         </span>
-                        <div className="bg-black text-white px-8 pt-4 pb-6 overflow-hidden flex transform -rotate-1 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]">
+                        <div className="bg-black text-white px-10 pt-4 pb-6 overflow-hidden flex transform rotate-1 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]">
                             <span className="inline-block whitespace-nowrap">
                                 {sentence2.split("").map((char, i) => (
                                     <motion.span
@@ -149,21 +142,23 @@ export default function RichHero() {
                         </div>
                     </h1>
 
+                    {/* Sub Copy */}
                     <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-lg sm:text-xl md:text-2xl text-slate-700 max-w-3xl leading-relaxed font-bold mt-10 mb-8 text-center relative drop-shadow-sm"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 1.8 }}
+                        className="text-lg sm:text-xl md:text-2xl text-black max-w-4xl leading-relaxed font-bold mb-16 text-center"
                     >
                         <span className="bg-white/80 backdrop-blur-sm px-2">
-                            ChatGPTなどの生成AI活用から、業務アプリ開発まで。
+                            曖昧な要望を、確かな成果へ。
                         </span>
                         <br className="hidden md:block" />
                         <span className="bg-white/80 backdrop-blur-sm px-2 mt-2 inline-block">
-                            難しい言葉は使わずに、成果につながる仕組みを。
+                            AI導入支援からカスタムアプリ開発まで、実利を追求するサービスを提供します。
                         </span>
                     </motion.p>
 
+                    {/* CTA Group */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -176,22 +171,17 @@ export default function RichHero() {
                             onMouseLeave={handleMouseLeave}
                             className="w-full sm:w-auto"
                         >
-                            <Link href="/contact" className="btn-primary flex items-center justify-center gap-3 group w-full sm:w-auto px-12 py-6 text-lg shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all">
-                                無料相談を予約する
+                            <Link href="#contact" className="btn-primary flex items-center justify-center gap-3 group w-full sm:w-auto px-12 py-6 text-lg shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-3 hover:translate-y-3 transition-all">
+                                相談を開始する
                                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                            </Link>
-                        </motion.div>
-                        <motion.div
-                            className="w-full sm:w-auto"
-                        >
-                            <Link href="/services" className="btn-secondary flex items-center justify-center gap-3 w-full sm:w-auto px-12 py-6 text-lg border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all">
-                                <Play className="w-5 h-5 fill-black" />
-                                サービス詳細
                             </Link>
                         </motion.div>
                     </motion.div>
                 </motion.div>
             </div>
+
+            {/* Bottom Accent */}
+            <div className="absolute bottom-0 left-0 right-0 h-[8px] bg-black" />
         </section>
     );
 }

@@ -11,7 +11,7 @@ import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+        <main className="min-h-screen text-black font-sans selection:bg-black selection:text-white">
             {/* 1. Rich Modern Hero Section */}
             <RichHero />
 
@@ -27,7 +27,7 @@ export default function Home() {
             {/* 5. Deep Tech / Architecture Section */}
             <DeepTechSection />
 
-            <div className="section-divider opacity-30 my-0 bg-slate-100" />
+            <div className="section-divider my-0 bg-black h-[4px]" />
 
             {/* 6. Founder Profile */}
             <FounderProfile />
