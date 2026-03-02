@@ -199,7 +199,7 @@ export default function RichHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black tracking-tighter text-slate-900 mb-6 font-sans leading-[1.05] drop-shadow-md flex flex-col items-center"
+                        className="text-[clamp(3rem,9vw,6.8rem)] font-black tracking-[-0.04em] text-slate-900 mb-7 font-sans leading-[0.98] drop-shadow-md flex flex-col items-center"
                     >
                         <span className="block mb-2 text-slate-800">未来の技術を、</span>
                         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 pb-2 relative">
@@ -211,7 +211,7 @@ export default function RichHero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-base sm:text-lg md:text-xl text-slate-700 max-w-2xl leading-relaxed font-bold mt-10 mb-8 text-center relative drop-shadow-sm"
+                        className="text-lg sm:text-xl md:text-2xl text-slate-700 max-w-3xl leading-relaxed font-bold mt-10 mb-8 text-center relative drop-shadow-sm"
                     >
                         <span className="relative z-10">
                             ChatGPTなどの生成AI活用から、業務アプリ開発まで。<br className="hidden md:block" />
