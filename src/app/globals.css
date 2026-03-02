@@ -1,25 +1,29 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography"; 
 :root {
-  /* Monochrome Palette */
-  --bg-primary: #FFFFFF;
+  /* Monochrome Palette with Analog Warmth */
+  --bg-primary: #FBFBFA; /* Warm Off-white / Paper texture base */
   --bg-secondary: #000000;
-  --bg-tertiary: #F8FAFC;
+  --bg-tertiary: #F1F1EF; /* Slightly deeper tone for depth */
 
   /* Text Colors */
-  --text-primary: #000000;
+  --text-primary: #1A1A1A; /* Not pure black for better readability on warm white */
   --text-secondary: #000000;
   --text-tertiary: #64748B;
 
   /* Accent (Monochrome) */
   --accent-black: #000000;
-  --accent-white: #FFFFFF;
+  --accent-white: #FBFBFA;
   
   /* Borders */
   --border-thick: 2px solid #000000;
   --border-thicker: 4px solid #000000;
 
-  /* Shadows (Minimalistic) */
+  /* Borders / Radii - Adding subtle softness */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Shadows (Minimalistic but softer) */
   --shadow-sm: 2px 2px 0px 0px rgba(0,0,0,1);
   --shadow-md: 4px 4px 0px 0px rgba(0,0,0,1);
   --shadow-lg: 8px 8px 0px 0px rgba(0,0,0,1);
@@ -70,19 +74,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mesh-gradient {
-  background-color: #FFFFFF;
+  background-color: var(--bg-primary);
   background-image: 
-    radial-gradient(at 0% 0%, hsla(217,91%,93%,1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(186,100%,94%,1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(274,90%,96%,1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(200,90%,96%,1) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(30,30%,90%,0.5) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210,20%,90%,0.5) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(0,0%,90%,0.5) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(45,20%,95%,0.5) 0px, transparent 50%);
+}
+
+/* ── Grainy Texture Overlay ── */
+.grainy-overlay {
+  position: relative;
+}
+
+.grainy-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 10;
 }
 
 /* ── Modern Card (Monochrome & Thick Border) ── */
 .modern-card {
   background: white;
   border: 2px solid black;
-  border-radius: 0; /* Sharp corners for modern solid look */
+  border-radius: var(--radius-sm); /* Subtle softness */
   box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
@@ -97,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   background: black;
   color: white;
   border: 2px solid black;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   transition: all 0.2s ease;
@@ -113,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   background: white;
   color: black;
   border: 2px solid black;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   transition: all 0.2s ease;
@@ -215,12 +237,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 1.5rem !important; /* 24px on mobile */
   line-height: 1.25 !important;
   font-weight: 900 !important;
-  color: black !important;
+  color: var(--text-primary) !important;
   border-left: 4px solid black !important;
   padding-left: 1rem !important;
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
-  background-color: #F8FAFC !important; /* bg-zinc-50 */
+  background-color: var(--bg-tertiary) !important; /* paper-like tone */
   margin-top: 3.5rem !important;
   margin-bottom: 1.5rem !important;
   text-transform: uppercase !important;
@@ -255,7 +277,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .blog-content strong {
   font-weight: 900 !important;
-  background-color: #F8FAFC; /* zinc-50 */
+  background-color: var(--bg-tertiary);
   padding-left: 0.125rem;
   padding-right: 0.125rem;
 }

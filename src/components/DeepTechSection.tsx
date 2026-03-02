@@ -15,26 +15,26 @@ export default function DeepTechSection() {
 
             {/* Simulated Custom Network Nodes Background - Monochrome */}
             <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden flex justify-center items-center">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" strokeWidth="1" />
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" strokeWidth="1" opacity="0.5" />
                         </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#grid)" />
+                    <rect width="1000" height="1000" fill="url(#grid)" />
 
-                    {/* Abstract connecting lines */}
-                    <g stroke="black" strokeWidth="2" fill="none">
-                        <path d="M 20% 80% Q 30% 50% 50% 50% T 80% 20%" />
-                        <path d="M 20% 20% Q 40% 40% 50% 50% T 80% 80%" />
+                    {/* Abstract connecting lines - Fixed paths (removing percentages in d) */}
+                    <g stroke="black" strokeWidth="2" fill="none" opacity="0.6">
+                        <path d="M 200 800 Q 300 500 500 500 T 800 200" />
+                        <path d="M 200 200 Q 400 400 500 500 T 800 800" />
                     </g>
 
-                    {/* Nodes */}
-                    <circle cx="20%" cy="80%" r="6" fill="black" />
-                    <circle cx="80%" cy="20%" r="6" fill="black" />
-                    <circle cx="20%" cy="20%" r="6" fill="black" />
-                    <circle cx="80%" cy="80%" r="6" fill="black" />
-                    <circle cx="50%" cy="50%" r="10" fill="black">
+                    {/* Nodes - Fixed coordinates (removing percentages) */}
+                    <circle cx="200" cy="800" r="6" fill="black" />
+                    <circle cx="800" cy="200" r="6" fill="black" />
+                    <circle cx="200" cy="200" r="6" fill="black" />
+                    <circle cx="800" cy="800" r="6" fill="black" />
+                    <circle cx="500" cy="500" r="10" fill="black">
                         <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite" />
                     </circle>
                 </svg>

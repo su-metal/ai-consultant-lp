@@ -16,7 +16,7 @@ export default function RecentBlogs() {
     }
 
     return (
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <section className="py-16 md:py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 max-w-6xl mx-auto">
                     <div>
@@ -41,7 +41,7 @@ export default function RecentBlogs() {
                     {recentPosts.map((post) => (
                         <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative flex flex-col bg-white border-4 border-black h-full transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
                             {/* 画像エリア */}
-                            <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b-4 border-black">
+                            <div className="relative h-56 w-full bg-slate-100 overflow-hidden border-b-4 border-black grainy-overlay">
                                 {post.image ? (
                                     <NextImage
                                         src={post.image}
