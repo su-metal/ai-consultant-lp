@@ -52,7 +52,7 @@ export default function RichHero() {
                         scale: [1, 1.1, 0.9, 1],
                     }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-blue-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-60"
+                    className="hidden md:block absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-blue-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-60"
                 />
                 <motion.div
                     animate={{
@@ -61,7 +61,7 @@ export default function RichHero() {
                         scale: [1, 0.9, 1.1, 1],
                     }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[50%] right-[10%] w-[600px] h-[600px] bg-purple-300 rounded-full mix-blend-multiply filter blur-[120px] opacity-50"
+                    className="hidden md:block absolute top-[50%] right-[10%] w-[600px] h-[600px] bg-purple-300 rounded-full mix-blend-multiply filter blur-[120px] opacity-50"
                 />
                 <motion.div
                     animate={{
@@ -70,7 +70,7 @@ export default function RichHero() {
                         scale: [1, 1.2, 0.8, 1],
                     }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute bottom-[-10%] left-[30%] w-[700px] h-[700px] bg-indigo-200 rounded-full mix-blend-multiply filter blur-[130px] opacity-50"
+                    className="hidden md:block absolute bottom-[-10%] left-[30%] w-[700px] h-[700px] bg-indigo-200 rounded-full mix-blend-multiply filter blur-[130px] opacity-50"
                 />
 
                 {/* Floating Particles/Sparkles */}
@@ -100,7 +100,7 @@ export default function RichHero() {
                     </div>
                 )}
 
-                <div className="absolute inset-0 bg-white/50 backdrop-blur-[30px]" />
+                <div className="absolute inset-0 bg-white/80 md:bg-white/50 backdrop-blur-none md:backdrop-blur-[30px]" />
 
                 {/* --- Abstract AI Core Visualization (Moved to Background) --- */}
                 <div className="absolute inset-0 w-full h-full pointer-events-none z-0 flex items-center justify-center opacity-40 mix-blend-multiply">
@@ -133,11 +133,11 @@ export default function RichHero() {
                             <motion.div
                                 animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
                                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute inset-[25%] rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 blur-3xl mix-blend-screen"
+                                className="absolute inset-[25%] rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 blur-2xl md:blur-3xl mix-blend-normal md:mix-blend-screen"
                             />
 
                             {/* Inner Glass Sphere */}
-                            <div className="absolute inset-[30%] rounded-full bg-gradient-to-bl from-white/90 via-blue-50/80 to-purple-50/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex items-center justify-center border border-white/60 backdrop-blur-2xl">
+                            <div className="absolute inset-[30%] rounded-full bg-gradient-to-bl from-white/90 via-blue-50/80 to-purple-50/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex items-center justify-center border border-white/60 backdrop-blur-md md:backdrop-blur-2xl">
                                 <span className="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-purple-600 drop-shadow-lg">
                                     AI
                                 </span>
