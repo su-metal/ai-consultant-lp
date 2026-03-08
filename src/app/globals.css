@@ -180,3 +180,28 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
+
+/* ── Blog Post Typography ── */
+.prose h2 {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent-blue);
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.prose h2::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: 0;
+  width: 4px;
+  height: 0%;
+  background: var(--accent-indigo);
+  transition: height 0.3s ease;
+}
+
+.prose h2:hover::after {
+  height: 100%;
+}
