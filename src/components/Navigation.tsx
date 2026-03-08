@@ -42,7 +42,7 @@ export default function Navigation() {
                 style={{ scaleX: scrollYProgress, width: '100%' }}
             />
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                <Link href="/" className="flex items-center group py-2 relative">
+                <Link href="/" className="flex items-center group py-0 relative">
                     {/* Hover Glow Effect */}
                     <div className="absolute -inset-2 bg-blue-50/0 group-hover:bg-blue-50/50 rounded-xl transition-colors duration-300 -z-10" />
 

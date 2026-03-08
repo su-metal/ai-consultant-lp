@@ -101,9 +101,39 @@ export default async function BlogPost({ params }: Props) {
 
                     {/* 記事本文 (Markdown) */}
                     <div
-                        className="prose prose-slate prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:leading-loose prose-p:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl"
+                        className="prose prose-slate prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:leading-loose prose-p:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-2xl mb-16"
                         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
                     />
+
+                    {/* さりげない CTA セクション */}
+                    <section className="mt-24 border-t border-slate-100 pt-16">
+                        <div className="max-w-2xl mx-auto rounded-3xl bg-blue-50 border border-blue-100/50 p-10 md:p-12 text-center transition-all hover:shadow-md shadow-sm">
+                            <div className="mb-6 flex justify-center">
+                                <span className="p-3 bg-white rounded-2xl shadow-sm border border-slate-100">
+                                    <Tag className="w-6 h-6 text-blue-500" />
+                                </span>
+                            </div>
+
+                            <h2 className="text-2xl md:text-3xl font-bold mb-5 !text-slate-900 border-none !pl-0 !border-0 text-center">
+                                「うちの場合はどうだろう？」と思ったら
+                            </h2>
+
+                            <p className="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg mx-auto">
+                                正解は一つではありません。貴社の現場に合わせた、等身大のAI活用を一緒に考えてみませんか。まずはお茶を飲むような感覚で、気軽にお話しを聞かせてください。
+                            </p>
+
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-slate-800 transition-all active:scale-95 group shadow-lg shadow-slate-200"
+                            >
+                                相談してみる <ChevronLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
+                            </Link>
+
+                            <p className="mt-6 text-slate-400 text-sm">
+                                ※無理な勧誘などは一切ございません。地域を支えるパートナーとしてお伺いします。
+                            </p>
+                        </div>
+                    </section>
                 </article>
             </div>
         </main>
