@@ -4,9 +4,13 @@ type ContactPayload = {
     companyName?: string;
     email?: string;
     message?: string;
+    website?: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_COMPANY_NAME_LENGTH = 120;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_MESSAGE_LENGTH = 5000;
 
 function escapeHtml(value: string) {
     return value
@@ -17,6 +21,13 @@ function escapeHtml(value: string) {
         .replace(/'/g, '&#39;');
 }
 
+function parseRecipients(value: string | undefined) {
+    return (value || 'info@machinami0924.com')
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean);
+}
+
 export async function POST(request: Request) {
     try {
         const body = (await request.json()) as ContactPayload;
@@ -24,8 +35,22 @@ export async function POST(request: Request) {
         const companyName = (body.companyName || '').trim();
         const email = (body.email || '').trim();
         const message = (body.message || '').trim();
+        const website = (body.website || '').trim();
 
-        if (!email || !EMAIL_REGEX.test(email)) {
+        if (website) {
+            return NextResponse.json({
+                message: 'お問い合わせを受け付けました。1〜2営業日以内にご連絡します。',
+            });
+        }
+
+        if (companyName.length > MAX_COMPANY_NAME_LENGTH) {
+            return NextResponse.json(
+                { error: '会社名は120文字以内で入力してください。' },
+                { status: 400 },
+            );
+        }
+
+        if (!email || email.length > MAX_EMAIL_LENGTH || !EMAIL_REGEX.test(email)) {
             return NextResponse.json(
                 { error: '有効なメールアドレスを入力してください。' },
                 { status: 400 },
@@ -36,9 +61,16 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'ご相談内容を入力してください。' }, { status: 400 });
         }
 
+        if (message.length > MAX_MESSAGE_LENGTH) {
+            return NextResponse.json(
+                { error: 'ご相談内容は5000文字以内で入力してください。' },
+                { status: 400 },
+            );
+        }
+
         const resendApiKey = process.env.RESEND_API_KEY;
-        const toEmail = process.env.CONTACT_TO_EMAIL || 'info@machinami0924.com';
         const fromEmail = process.env.CONTACT_FROM_EMAIL;
+        const toEmails = parseRecipients(process.env.CONTACT_TO_EMAIL);
 
         if (!resendApiKey || !fromEmail) {
             console.error('Contact mail env is not configured. RESEND_API_KEY / CONTACT_FROM_EMAIL are required.');
@@ -53,6 +85,7 @@ export async function POST(request: Request) {
         const text = [
             '無料相談フォームからお問い合わせがありました。',
             '',
+            `受信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}`,
             `会社名: ${companyName || '未入力'}`,
             `メールアドレス: ${email}`,
             '',
@@ -63,6 +96,7 @@ export async function POST(request: Request) {
         const html = `
             <div style="font-family: system-ui, sans-serif; line-height: 1.7; color: #0f172a;">
               <h2 style="margin: 0 0 16px;">無料相談フォームからお問い合わせがありました</h2>
+              <p style="margin: 0 0 8px;"><strong>受信日時:</strong> ${escapeHtml(new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }))}</p>
               <p style="margin: 0 0 8px;"><strong>会社名:</strong> ${escapeHtml(companyName || '未入力')}</p>
               <p style="margin: 0 0 8px;"><strong>メールアドレス:</strong> ${escapeHtml(email)}</p>
               <p style="margin: 16px 0 8px;"><strong>ご相談内容:</strong></p>
@@ -78,7 +112,7 @@ export async function POST(request: Request) {
             },
             body: JSON.stringify({
                 from: fromEmail,
-                to: [toEmail],
+                to: toEmails,
                 reply_to: email,
                 subject,
                 text,
