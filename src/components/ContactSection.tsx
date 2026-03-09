@@ -8,6 +8,7 @@ export default function ContactSection() {
         companyName: '',
         email: '',
         message: '',
+        website: '',
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitState, setSubmitState] = useState<{
@@ -46,6 +47,7 @@ export default function ContactSection() {
                 companyName: '',
                 email: '',
                 message: '',
+                website: '',
             });
         } catch (error) {
             setSubmitState({
@@ -122,6 +124,18 @@ export default function ContactSection() {
                         <p className="text-sm text-slate-500 mb-6 font-mono">30 MINUTES FREE CONSULTATION</p>
 
                         <form className="space-y-5" onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="website"
+                                value={formData.website}
+                                onChange={(event) =>
+                                    setFormData((prev) => ({ ...prev, website: event.target.value }))
+                                }
+                                tabIndex={-1}
+                                autoComplete="off"
+                                className="hidden"
+                                aria-hidden="true"
+                            />
                             <div>
                                 <label className="block text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Company Name</label>
                                 <input
