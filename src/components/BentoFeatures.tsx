@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Code, Zap, Shield, LineChart, Cpu, ArrowRight } from 'lucide-react';
+import { Bot, Code, Zap, Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function BentoFeatures() {
@@ -45,6 +45,10 @@ export default function BentoFeatures() {
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-blue-500" />
                                     <span className="text-sm font-bold text-slate-700">プロンプト設計</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-cyan-500" />
+                                    <span className="text-sm font-bold text-slate-700">チャットボット作成</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-indigo-500" />
@@ -131,8 +135,8 @@ export default function BentoFeatures() {
                             <p className="text-slate-600 text-sm leading-relaxed mb-6">
                                 「AIで何ができるかわからない」という状態からでも丁寧にサポートします。機密情報の漏洩を防ぐセキュリティを考慮し、御社専用の社内AIや業務アプリを安全に構築します。
                             </p>
-                            <Link href="/services" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-500 transition-colors w-fit">
-                                サービス詳細を見る
+                            <Link href="/services/chatbot" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-500 transition-colors w-fit">
+                                チャットボット詳細を見る
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                         </div>

@@ -20,11 +20,25 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://machinami-ai.com'),
   title: {
-    default: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
+    default: "まちなみ AI | 豊橋のAI導入・AIコンサルティング支援",
     template: "%s | まちなみ AI"
   },
-  description: "東三河（豊橋・豊川・蒲郡）を拠点とする「まちなみ AI」。中小企業の業務効率化・生成AI導入支援から、Webアプリケーション開発までを一気通貫でサポートします。",
-  keywords: ["AIコンサルティング", "アプリ開発", "業務効率化", "東三河", "豊橋", "生成AI導入", "まちなみAI"],
+  description: "豊橋・東三河を拠点に、中小企業向けのAI導入支援、AIコンサルティング、生成AI活用、業務効率化アプリ開発を提供する「まちなみ AI」。豊橋でAI導入を相談したい企業を伴走支援します。",
+  keywords: [
+    "豊橋 AI",
+    "豊橋 AI導入",
+    "豊橋 チャットボット作成",
+    "豊橋 AIコンサル",
+    "AIコンサルティング",
+    "AI導入支援",
+    "チャットボット作成",
+    "生成AI導入",
+    "アプリ開発",
+    "業務効率化",
+    "東三河",
+    "豊橋",
+    "まちなみAI"
+  ],
   authors: [{ name: "佐田 真教" }],
   creator: "佐田 真教",
   publisher: "まちなみ AI",
@@ -34,8 +48,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
-    description: "東三河を拠点に、最新AI技術で地域企業の未来を創るコンサルティング＆開発パートナー。",
+    title: "まちなみ AI | 豊橋のAI導入・AIコンサルティング支援",
+    description: "豊橋・東三河の中小企業向けに、AI導入支援、生成AI活用、業務効率化アプリ開発を提供するコンサルティング＆開発パートナー。",
     url: 'https://machinami-ai.com',
     siteName: 'まちなみ AI',
     locale: 'ja_JP',
@@ -43,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "まちなみ AI | 東三河のAIコンサルティング & アプリ開発",
-    description: "東三河を拠点に、最新AI技術で地域企業の未来を創るコンサルティング＆開発パートナー。",
+    title: "まちなみ AI | 豊橋のAI導入・AIコンサルティング支援",
+    description: "豊橋・東三河の中小企業向けに、AI導入支援、生成AI活用、業務効率化アプリ開発を提供するコンサルティング＆開発パートナー。",
   },
   robots: {
     index: true,

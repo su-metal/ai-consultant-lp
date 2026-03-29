@@ -68,11 +68,11 @@ const MissionSection = () => {
                         <div className="space-y-4 text-base md:text-lg text-slate-600 leading-relaxed font-medium">
                             <p>
                                 東京の大企業だけが最新技術を使える時代は終わりました。<br className="hidden md:block" />
-                                東三河で頑張る地元企業こそ、AIの恩恵を受けるべきだと考えます。
+                                豊橋をはじめ東三河で頑張る地元企業こそ、AIの恩恵を受けるべきだと考えます。
                             </p>
                             <p className="text-slate-800 font-medium">
                                 難しい言葉は使いません。<br className="hidden md:block" />
-                                「現場で本当に使える」仕組みを、一緒に作り上げていきます。
+                                「現場で本当に使える」AI導入の仕組みを、一緒に作り上げていきます。
                             </p>
                         </div>
                     </motion.div>
