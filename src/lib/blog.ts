@@ -13,6 +13,7 @@ export type BlogPostData = {
     description?: string;
     image?: string; // 記事固有のアイキャッチ画像
     tags?: string[];
+    draft?: boolean; // 下書きフラグ
     contentHtml?: string;
 };
 
@@ -38,7 +39,8 @@ export function getSortedPostsData(): BlogPostData[] {
                 slug,
                 ...(matterResult.data as Omit<BlogPostData, 'slug' | 'contentHtml'>),
             };
-        });
+        })
+        .filter(post => !post.draft); // 下書きを除外
 
     return allPostsData.sort((a, b) => {
         if (a.date < b.date) {

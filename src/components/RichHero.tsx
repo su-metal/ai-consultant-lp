@@ -192,8 +192,17 @@ export default function RichHero() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
                         </span>
-                        開発・AI導入のご相談、受付中
+                        豊橋・東三河のAI導入相談、受付中
                     </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.05 }}
+                        className="text-sm sm:text-base font-semibold tracking-[0.08em] text-slate-600 uppercase mb-4"
+                    >
+                        豊橋のAI導入・生成AI活用を、現場に合わせて伴走支援
+                    </motion.p>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -214,7 +223,7 @@ export default function RichHero() {
                         className="text-base sm:text-lg md:text-xl text-slate-700 max-w-2xl leading-relaxed font-bold mt-10 mb-8 text-center relative drop-shadow-sm"
                     >
                         <span className="relative z-10">
-                            ChatGPTなどの生成AI活用から、業務アプリ開発まで。<br className="hidden md:block" />
+                            豊橋の中小企業向けに、ChatGPTなどの生成AI活用からAI導入、業務アプリ開発まで。<br className="hidden md:block" />
                             難しい言葉は使わずに、成果につながる仕組みを作ります。
                         </span>
                     </motion.p>

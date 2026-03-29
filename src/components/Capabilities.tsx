@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
-import { Sparkles, Code, HeartHandshake, ArrowRight } from 'lucide-react';
+import { Sparkles, Code, HeartHandshake, MessageSquareText, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const capabilities = [
@@ -14,6 +14,15 @@ const capabilities = [
         bgSrc: 'from-blue-100 to-blue-50',
         borderColor: 'border-blue-400',
         topGradient: 'from-blue-400 to-blue-600'
+    },
+    {
+        icon: MessageSquareText,
+        title: 'チャットボット作成',
+        description: 'Webサイト、LINE、社内向けヘルプデスクなどに対応したチャットボットを設計・構築。問い合わせの一次対応や資料案内を自動化し、対応品質を平準化します。',
+        color: 'text-cyan-600',
+        bgSrc: 'from-cyan-100 to-cyan-50',
+        borderColor: 'border-cyan-400',
+        topGradient: 'from-cyan-400 to-blue-600'
     },
     {
         icon: Code,
@@ -96,7 +105,7 @@ const Capabilities = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-6xl mx-auto"
                 >
                     {capabilities.map((item, index) => {
                         const Icon = item.icon;
