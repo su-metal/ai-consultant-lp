@@ -32,7 +32,7 @@ export default function Navigation() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm'
+                ? 'bg-white/95 border-b border-slate-200 shadow-sm'
                 : 'bg-transparent'
                 }`}
         >
@@ -107,7 +107,7 @@ export default function Navigation() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-hidden"
+                        className="md:hidden bg-white/98 border-b border-slate-200 overflow-hidden"
                     >
                         <div className="px-4 py-6 space-y-4">
                             {navLinks.map((link) => (
