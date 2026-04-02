@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView, useReducedMotion, Variants } from 'framer-motion';
 import { ArrowRight, BookOpenText, CheckCircle2, Sparkles } from 'lucide-react';
 
 export default function FreeResourceBanner() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const prefersReducedMotion = useReducedMotion();
 
     const containerVariants: Variants = {
         hidden: { opacity: 0, y: 40 },
@@ -37,34 +38,32 @@ export default function FreeResourceBanner() {
                 >
                     {/* --- Background Effects (Optimized for Mobile) --- */}
                     <div className="absolute inset-0 z-0 pointer-events-none">
-                        {/* Static base for mobile performance */}
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-blue-950 to-slate-950 opacity-95" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(96,165,250,0.16),transparent_30%),radial-gradient(circle_at_82%_78%,rgba(129,140,248,0.14),transparent_32%)]" />
 
-                        {/* Animated orbs - Only active on Desktop for performance */}
                         <div className="hidden md:block absolute inset-0 overflow-hidden">
                             <motion.div
-                                animate={{
-                                    scale: [1, 1.2, 1],
-                                    x: [0, 30, 0],
-                                    y: [0, -20, 0],
-                                }}
-                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                                className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]"
+                                animate={prefersReducedMotion ? undefined : { x: [0, 18, 0], y: [0, -12, 0] }}
+                                transition={
+                                    prefersReducedMotion
+                                        ? { duration: 0 }
+                                        : { duration: 18, repeat: Infinity, ease: "easeInOut" }
+                                }
+                                className="absolute top-[8%] right-[10%] w-40 h-40 rounded-full border border-blue-400/20 bg-blue-400/8"
                             />
                             <motion.div
-                                animate={{
-                                    scale: [1.2, 1, 1.2],
-                                    x: [0, -40, 0],
-                                    y: [0, 30, 0],
-                                }}
-                                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                                className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px]"
+                                animate={prefersReducedMotion ? undefined : { x: [0, -14, 0], y: [0, 10, 0] }}
+                                transition={
+                                    prefersReducedMotion
+                                        ? { duration: 0 }
+                                        : { duration: 20, repeat: Infinity, ease: "easeInOut" }
+                                }
+                                className="absolute bottom-[10%] left-[6%] w-28 h-28 rounded-full border border-indigo-300/20 bg-indigo-300/8"
                             />
                         </div>
 
-                        {/* Glass Mesh Overlay */}
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.1),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(99,102,241,0.08),transparent_40%)]" />
-                        <div className="absolute inset-0 backdrop-blur-3xl md:backdrop-blur-none" />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.05))]" />
                     </div>
 
                     <div className="relative z-10 bg-slate-950/40 rounded-[2.3rem] p-8 md:p-16 border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
@@ -75,8 +74,12 @@ export default function FreeResourceBanner() {
                                 className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-8 shadow-inner"
                             >
                                 <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                    animate={prefersReducedMotion ? undefined : { rotate: 360 }}
+                                    transition={
+                                        prefersReducedMotion
+                                            ? { duration: 0 }
+                                            : { duration: 8, repeat: Infinity, ease: "linear" }
+                                    }
                                 >
                                     <Sparkles className="w-3.5 h-3.5" />
                                 </motion.div>
@@ -120,9 +123,8 @@ export default function FreeResourceBanner() {
                             variants={itemVariants}
                             className="shrink-0 w-full lg:w-[380px] relative mt-4 lg:mt-0"
                         >
-                            <div className="relative group/cta p-8 rounded-[2rem] bg-gradient-to-br from-white to-slate-50 shadow-[0_20px_50px_rgba(0,0,0,0.2)] md:shadow-none md:bg-white/95 md:backdrop-blur-xl md:border md:border-white/20 overflow-hidden text-center lg:text-left">
-                                {/* Inner glow animation for CTA - Hidden on Mobile */}
-                                <div className="hidden md:block absolute -inset-[100%] bg-gradient-to-r from-transparent via-blue-400/10 to-transparent group-hover/cta:animate-shimmer pointer-events-none" />
+                            <div className="relative group/cta p-8 rounded-[2rem] bg-gradient-to-br from-white to-slate-50 shadow-[0_20px_50px_rgba(0,0,0,0.2)] md:shadow-none md:bg-white/95 md:border md:border-white/20 overflow-hidden text-center lg:text-left">
+                                <div className="hidden md:block absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent pointer-events-none" />
 
                                 <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left">
                                     <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
@@ -146,16 +148,14 @@ export default function FreeResourceBanner() {
                                 </div>
                             </div>
 
-                            {/* Floating decorative elements - Only on Desktop */}
-                            <div className="hidden lg:block absolute -top-8 -right-8 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl animate-pulse" />
-                            <div className="hidden lg:block absolute -bottom-6 -left-6 w-16 h-16 bg-indigo-500/20 rounded-full blur-xl animate-bounce-slow" />
+                            <div className="hidden lg:block absolute -top-6 -right-6 w-14 h-14 rounded-full border border-blue-300/30 bg-blue-400/10" />
+                            <div className="hidden lg:block absolute -bottom-4 -left-4 w-10 h-10 rounded-full border border-indigo-300/30 bg-indigo-300/10" />
                         </motion.div>
                     </div>
                 </motion.div>
             </div>
 
-            {/* Background Texture Overlay */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}></div>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize: '22px 22px' }}></div>
         </section>
     );
 }
