@@ -16,9 +16,9 @@ import {
 import ContactSection from '@/components/ContactSection';
 
 export const metadata: Metadata = {
-  title: '豊橋のチャットボット作成・導入支援',
+  title: 'チャットボット作成・導入支援 | まちなみ AI',
   description:
-    '豊橋・東三河の企業向けチャットボット作成サービス。問い合わせ対応、予約受付、社内ヘルプデスクを自動化し、導入メリット、費用、効果、導入の流れまでわかる詳細ページです。',
+    'ビジネスを自動化するチャットボット作成サービス。問い合わせ対応、予約受付、社内ヘルプデスクを自動化し、導入メリット、費用、効果、導入の流れまで包括的に支援します。',
   alternates: {
     canonical: 'https://machinami-ai.com/services/chatbot',
   },
@@ -136,7 +136,7 @@ const chatbotSchema = {
     areaServed: ['豊橋市', '豊川市', '蒲郡市', '田原市', '新城市', '東三河'],
   },
   serviceType: 'チャットボット作成',
-  areaServed: '豊橋・東三河',
+  areaServed: '全国対応',
   description:
     '問い合わせ対応、予約受付、社内FAQ対応などに対応したチャットボットの設計・構築・改善支援サービス。',
 };
@@ -158,7 +158,7 @@ export default function ChatbotServicePage() {
               Chatbot Service
             </p>
             <h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-black tracking-[-0.04em] leading-[0.98] mb-6">
-              豊橋の企業向け
+              ビジネスを加速させる
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 チャットボット作成
               </span>
