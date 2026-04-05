@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Bot, MessageSquareText, Sparkles } from 'lucide-react';
+import { ArrowRight, Bot, MessageSquareText, Sparkles, Globe } from 'lucide-react';
 import Hero from '@/components/Hero';
 import Problems from '@/components/Problems';
 import CaseStudies from '@/components/CaseStudies';
@@ -10,8 +10,8 @@ import ROI_Calculator from '@/components/ROI_Calculator';
 import ContactSection from '@/components/ContactSection';
 
 export const metadata: Metadata = {
-  title: '豊橋のAI導入支援・サービス一覧',
-  description: '豊橋・東三河の企業向けに、AI導入支援、生成AIコンサルティング、チャットボット作成、補助金活用、業務効率化アプリ開発を提供するサービス一覧です。',
+  title: 'AI導入支援・サービス一覧 | まちなみ AI',
+  description: 'AI導入支援、生成AIコンサルティング、チャットボット作成、補助金活用、業務効率化アプリ開発、AIウェブ制作を提供するサービス一覧です。',
   alternates: {
     canonical: 'https://machinami-ai.com/services',
   },
@@ -32,6 +32,14 @@ const services = [
     description: '問い合わせ対応、予約受付、社内ヘルプデスク、資料案内などに使えるチャットボットを設計・構築します。',
     points: ['Webサイト埋め込み', 'LINE連携や社内向け対応', 'FAQ/RAG連携'],
     href: '/services/chatbot',
+    cta: '詳細を見る',
+  },
+  {
+    icon: Globe,
+    title: 'AIエージェントで作るウェブ制作',
+    description: 'AIエージェントが設計・開発を担い、チャットボット付きで納品。WordPressなし、短納期・低コストで本格サイトを構築します。',
+    points: ['コーポレートサイト＋チャットボットセット', 'AIエージェントによる高速開発', 'WP不使用・保守コスト削減'],
+    href: '/services/website',
     cta: '詳細を見る',
   },
   {
@@ -63,11 +71,11 @@ export default function ServicesPage() {
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               まちなみ AI では、AI導入の相談だけでなく、実際に動く仕組みの構築まで対応します。
-              特にチャットボット作成は、問い合わせ対応の省力化や見込み客対応の改善に直結しやすい領域です。
+              特にチャットボット作成やAIによるウェブ制作は、DXの第一歩として直結しやすい領域です。
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
             {services.map((service) => {
               const Icon = service.icon;
               return (

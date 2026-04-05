@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Code, Zap, Shield, ArrowRight } from 'lucide-react';
+import { Bot, Code, Zap, Shield, ArrowRight, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 export default function BentoFeatures() {
@@ -66,7 +66,7 @@ export default function BentoFeatures() {
                         </div>
                     </motion.div>
 
-                    {/* --- Card 2: App Dev (Small, Clean) --- */}
+                    {/* --- Card 2: AI Website (Small, Clean) --- */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -74,26 +74,27 @@ export default function BentoFeatures() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="md:col-span-1 bg-white rounded-[2rem] p-6 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-indigo-100/50 rounded-full blur-[50px]" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-100/30 rounded-full blur-[50px]" />
 
                         <div className="relative z-10 h-full flex flex-col">
-                            <div className="w-12 h-12 bg-indigo-50 text-indigo-600 flex items-center justify-center rounded-xl mb-6">
-                                <Code className="w-6 h-6" />
+                            <div className="w-12 h-12 bg-blue-50 text-blue-600 flex items-center justify-center rounded-xl mb-6">
+                                <Globe className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-2">モダンWeb開発</h3>
+                            <h3 className="text-xl font-bold text-slate-900 mb-2">AIエージェントで作るウェブサイト</h3>
                             <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                                Next.js, Reactを活用した高速でセキュアなアプリケーション開発。MVPから本格運用までスケーラブルに対応。
+                                AIが設計・開発を担い、チャットボット付きで納品。通常の1/2の期間で本格サイトを構築。
                             </p>
 
-                            <div className="mt-auto space-y-3">
-                                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div className="h-full bg-indigo-500 w-[90%]" />
-                                </div>
-                                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div className="h-full bg-purple-500 w-[75%]" />
-                                </div>
+                            <div className="mt-auto flex flex-wrap gap-2">
+                                <span className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full border border-blue-100">コーポレートサイト</span>
+                                <span className="px-3 py-1 bg-indigo-50 text-indigo-600 text-[10px] font-bold rounded-full border border-indigo-100">LP制作</span>
+                                <span className="px-3 py-1 bg-slate-50 text-slate-600 text-[10px] font-bold rounded-full border border-slate-100">高速開発</span>
                             </div>
+                            
+                            <Link href="/services/website" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:gap-2 transition-all">
+                                詳細を見る <ArrowRight className="w-3 h-3" />
+                            </Link>
                         </div>
                     </motion.div>
 
