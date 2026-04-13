@@ -79,9 +79,10 @@ export default function Footer() {
                     <p className="font-mono">
                         &copy; 2026 まちなみ AI. All rights reserved.
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                         <Link href="/privacy" className="hover:text-blue-400 transition-colors">プライバシーポリシー</Link>
                         <Link href="/terms" className="hover:text-blue-400 transition-colors">利用規約</Link>
+                        <Link href="/asct" className="hover:text-blue-400 transition-colors">特定商取引法に基づく表記</Link>
                         <span className="font-serif">代表: 佐田真教</span>
                     </div>
                 </div>
