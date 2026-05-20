@@ -61,14 +61,14 @@ export const metadata: Metadata = {
     description: "豊橋・東三河の中小企業向けに、AI導入支援、生成AI活用、業務効率化アプリ開発を提供するコンサルティング＆開発パートナー。",
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
     googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      index: false,
+      follow: false,
+      noarchive: true,
+      nosnippet: true,
+      noimageindex: true,
     },
   },
   verification: {
